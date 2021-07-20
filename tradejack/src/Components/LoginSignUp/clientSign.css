@@ -1,0 +1,8 @@
+.form__client{
+  display:flex;
+  flex-direction: column;
+}
+
+.form__client input{
+    margin: 1em;
+}

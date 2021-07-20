@@ -33,7 +33,7 @@ export const LoginForm = ({roleState, setUserRole}) => {
     if(data.role) {
       localStorage.setItem('accessToken',data.accessToken);
       setUserRole(data.role);
-      history.push('/home');
+      history.push('/');
     } else {
       setError(data.message);
       setTimeout(() => {

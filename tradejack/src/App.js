@@ -13,7 +13,6 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Navbar userRole={userRole}/>
-          <h1>Tradejack</h1>
           <Switch>
             <Route path='/' exact>
               <Home />
@@ -55,7 +54,6 @@ function App() {
       <div className="App">
         <BrowserRouter>
         <Navbar userRole={userRole} setUserRole={setUserRole}/>
-          <h1>Tradejack</h1>
           <Switch>
             <Route path='/' exact >
               <ContractorHome />

@@ -21,6 +21,9 @@ export const Navbar = ({userRole, setUserRole}) => {
         {!userRole && <li className='nav__point'>
           <Link to='/login'>Login</Link>
         </li>}
+        {!userRole && <li className='nav__point'>
+          <Link to='/join'>Sign up</Link>
+        </li>}
         <li className='nav__point'>
           <Link to='/about'>About</Link>
         </li>

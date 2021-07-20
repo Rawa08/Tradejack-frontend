@@ -1,5 +1,6 @@
 import React from 'react';
-import { LoginForm } from './LoginForm';
+import { SignupFormClient } from './SignupFormClient';
+import {SignupFormContractor} from './SignupFormContractor';
 import './Signup.css'
 import { useState } from 'react';
 
