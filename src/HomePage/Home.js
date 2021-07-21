@@ -1,3 +1,5 @@
+import { WorkorderList } from "../Components/clients/WorkorderList";
+
 export const Home = () => {
   return (
     <div>
@@ -14,6 +16,9 @@ export const ClientHome = () => {
       <h2>Your friendly client Home Page</h2>
 
       <p>Fill with Lorem Ipsum about clients</p>
+
+      <WorkorderList/>
+      <></>
     </div>
   )
 }

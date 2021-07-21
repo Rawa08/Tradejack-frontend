@@ -6,8 +6,9 @@ export const Navbar = ({userRole, setUserRole}) => {
   const history = useHistory()
 
   const logOut = () => {
-    setUserRole('');
+    setUserRole('')
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('role');
     history.push('/')
   }
 

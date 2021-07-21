@@ -3,10 +3,15 @@ import { Home, ClientHome, ContractorHome } from "./HomePage/Home"
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Signup } from "./Components/LoginSignUp/Signup";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [userRole, setUserRole] = useState('');
+
+  useEffect(()=> {
+    const role = localStorage.getItem('role');
+    setUserRole(role);
+  },[]);
 
   if (!userRole) {
     return (
