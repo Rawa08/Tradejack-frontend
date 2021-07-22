@@ -4,6 +4,7 @@ import { Navbar } from "./Components/Navbar/Navbar";
 import { Signup } from "./Components/LoginSignUp/Signup";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import {WorkOrders} from './Components/contractors/WorkOrders'
 
 function App() {
   const [userRole, setUserRole] = useState('');
@@ -48,6 +49,9 @@ function App() {
             </Route >
             <Route path='/about'>
               <Home />
+            </Route>
+            <Route path='/orders'>
+              <WorkOrders />
             </Route>
           </Switch>
         </BrowserRouter>

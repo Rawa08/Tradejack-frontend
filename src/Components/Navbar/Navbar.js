@@ -25,6 +25,9 @@ export const Navbar = ({userRole, setUserRole}) => {
         {!userRole && <li className='nav__point'>
           <Link to='/join'>Sign up</Link>
         </li>}
+        {userRole && <li className='nav__point'>
+          <Link to='/orders'>Contractor Work Orders</Link>
+        </li>}
         <li className='nav__point'>
           <Link to='/about'>About</Link>
         </li>

@@ -1,56 +1,33 @@
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { changeDoneStatus, fetchWorkOffers } from '../../Slice/workorder-slice'
 import { CreateOffers } from '../contractors/CreateOffers'
-import { WorkOfferCard } from './WorkOfferCard';
 
-export const WorkOrderCard = ({ order }) => {
+export const ContractorOrderCard = ({ order }) => {
     const dispatch = useDispatch();
-    const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink, start_date: startDate, work_done: workDone }
+    const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink,
+         start_date: startDate, work_done: workDone }
         = order;
 
     // const descLength = description.length;
     const date = new Date(startDate)
     date.setHours(date.getHours() + 2);
     // const role = localStorage.getItem('role');
-    const redRawa = {
-        textDecoration: workDone ? "line-through" : "none",
-        backgroundColor: workDone ? "red" : "transparent"
-    }
 
     const image_style = {
         maxWidth: '20%',
         maxHight: '20%'
     }
 
-    useEffect(() => {
-        dispatch(fetchWorkOffers(id))
-    }, [dispatch, id])
-
-    const onDone = () => {
-        dispatch(changeDoneStatus(id))
-    }
-
     return (
-        <div style={redRawa}>
+        <div>
             <p>Work Order:</p>
-            {imgLink.map(image => <img style={image_style} key={image} src={image} alt="look here, it's a naked crocodile" />)}
+            {imgLink.map((image, i) => <img style={image_style} key={`${image}+${i}`} src={image} alt="look here, it's a naked crocodile" />)}
             <h3>{title}</h3>
             <p>{description}</p>
             <h4>Adress</h4>
             <p>{street}</p>
             <p>{postalCode}</p>
             <p>{city}</p>
-            <button onClick={onDone}>Order Done</button>
             <CreateOffers id={id} />
-            <div className='Offer-holder'>
-                {order.workOffers && order.workOffers.map(offer => (
-                    <WorkOfferCard key={offer.id} offer={offer} />
-                ))}
-            </div>
-            {/* {role === 'client' ? offers.map(offer => {
-                <WorkOfferCard/>
-            }) : <createWorkOffer id={id}/>} */}
         </div>
     )
 }
