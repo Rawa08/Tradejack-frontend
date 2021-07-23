@@ -4,7 +4,7 @@ import {SignupFormContractor} from './SignupFormContractor';
 import './Signup.css'
 import { useState } from 'react';
 
-export const Signup = () => {
+export const Signup = ({togglePopup}) => {
   const [roleState, setRoleState] = useState('client');
 
   const toggleState = () => {
@@ -19,8 +19,8 @@ export const Signup = () => {
           <span className="slider round"></span>
         </label>
         <h4>{roleState} Sign Up</h4>
-        {roleState === 'client' ? <SignupFormClient />
-          : <SignupFormContractor/> }
+        {roleState === 'client' ? <SignupFormClient togglePopup={togglePopup}/>
+          : <SignupFormContractor togglePopup={togglePopup}/> }
     </div>
       )
 }

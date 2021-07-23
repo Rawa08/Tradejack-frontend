@@ -5,9 +5,12 @@ import '../Margin.css';
 export const Home = () => {
   return (
     <div className='container'>
-      <h2>Home Page</h2>
+      <h2>One place, All the workers</h2>
 
-      <p>Fill with Lorem Ipsum</p>
+      <p>Have a broken window?</p>
+      <p>Need a room painted</p>
+
+      <p>Come find all of our TradeJacks</p>
     </div>
   )
 }

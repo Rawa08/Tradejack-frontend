@@ -4,6 +4,7 @@ import { fetchWorkorders } from '../../Slice/workorder-slice';
 import { WorkOrderCard as OrderCard } from './workorderCard';
 import Popup from '../Popup/Popup'
 import CreateOrder from './CreateOrder';
+import './WorkorderList.css'
 
 
 
@@ -25,11 +26,17 @@ export const WorkorderList = () => {
     }
 
     return (
+        <div>
+        <div>
+
+        </div>
+
         <div className="order-list">
             <input
                 type="button"
-                value="Create new Work Order"
+                value="New Work Order"
                 onClick={togglePopup}
+                className='newOrder'
             />
             {isOpen && <Popup content={<CreateOrder newOrderBoolean={newOrderBoolean} setNewOrderBoolean={setNewOrderBoolean}
              setIsOpen={setIsOpen}/>} togglePopup={togglePopup}/> }
@@ -38,6 +45,7 @@ export const WorkorderList = () => {
             {orders.entities.map(order => (
                 <OrderCard order={order} key={order.id} />
             ))}
+        </div>
         </div>
     )
 }

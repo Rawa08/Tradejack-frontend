@@ -27,8 +27,7 @@ export const ContractorOrderCard = ({ order }) => {
             <p>{street}</p>
             <p>{postalCode}</p>
             <p>{city}</p>
-
-            <CreateOffers id={id} />
+            {isOpen && <Popup content={<CreateOffers id={id} />} toggle={togglePopup}/>}
         </div>
     )
 }

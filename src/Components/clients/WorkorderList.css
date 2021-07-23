@@ -1,0 +1,9 @@
+.newOrder{
+  justify-self: end;
+  width: 140px;
+}
+
+.order-list{
+  display:flex;
+  flex-direction: column;
+}
