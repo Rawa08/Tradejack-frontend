@@ -1,0 +1,22 @@
+.creatorCard__img{
+  max-width:175px;
+  height:auto;
+}
+
+.creatorCard{
+  display: flex;
+  flex-direction: row;
+  margin:1rem;
+
+}
+.creatorCard__info{
+  flex-direction: column;
+  margin:2rem ;
+}
+@media screen and (min-width: 500px) {
+  .creatorCard__img{
+    max-width:300px;
+    height:auto;
+  }
+}
+

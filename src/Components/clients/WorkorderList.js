@@ -1,31 +1,42 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchWorkorders } from '../../Slice/workorder-slice';
-import {WorkOrderCard as OrderCard} from './workorderCard';
-import CreateOrder from './CreateOrder'
+import { WorkOrderCard as OrderCard } from './workorderCard';
+import Popup from '../Popup/Popup'
+import CreateOrder from './CreateOrder';
+
 
 
 export const WorkorderList = () => {
-    const id = '0a7f0b5d-1160-4bfd-8103-a5de4db55b6e';
     const dispatch = useDispatch();
     const orders = useSelector(state => (state.workorderSlice))
-
+    const [isOpen, setIsOpen] = useState(false);
     const [newOrderBoolean, setNewOrderBoolean] = useState(false);
 
-    useEffect(() =>{
-        dispatch(fetchWorkorders(id))
-    },[dispatch, newOrderBoolean]);
+    useEffect(() => {
+        dispatch(fetchWorkorders())
+    }, [dispatch, newOrderBoolean]);
 
-    if(orders.status !== 'done') {
+    if (orders.status !== 'done') {
         return <><p>Loading...</p></>
     }
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    }
 
-    return(
+    return (
         <div className="order-list">
-            <CreateOrder newOrderBoolean={newOrderBoolean} setNewOrderBoolean={setNewOrderBoolean} />
+            <input
+                type="button"
+                value="Create new Work Order"
+                onClick={togglePopup}
+            />
+            {isOpen && <Popup content={<CreateOrder newOrderBoolean={newOrderBoolean} setNewOrderBoolean={setNewOrderBoolean}
+             setIsOpen={setIsOpen}/>} togglePopup={togglePopup}/> }
+
             <h2>Hella work Orders:</h2>
             {orders.entities.map(order => (
-               <OrderCard order={order} key={order.id} />
+                <OrderCard order={order} key={order.id} />
             ))}
         </div>
     )

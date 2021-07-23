@@ -2,9 +2,12 @@ import { Login } from "./Components/LoginSignUp/Login";
 import { Home, ClientHome, ContractorHome } from "./HomePage/Home"
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Signup } from "./Components/LoginSignUp/Signup";
+import {About} from './Components/BlurbPages/About'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import {WorkOrders} from './Components/contractors/WorkOrders'
+import {WorkOrders} from './Components/contractors/WorkOrders';
+
+
 
 function App() {
   const [userRole, setUserRole] = useState('');
@@ -30,7 +33,7 @@ function App() {
               <Signup />
             </Route>
             <Route path='/about'>
-              <Home />
+              <About />
             </Route>
           </Switch>
         </BrowserRouter>
@@ -48,7 +51,7 @@ function App() {
               <ClientHome />
             </Route >
             <Route path='/about'>
-              <Home />
+              <About />
             </Route>
             <Route path='/orders'>
               <WorkOrders />
@@ -68,7 +71,7 @@ function App() {
               <ContractorHome />
             </Route>
             <Route path='/about'>
-              <Home />
+              <About />
             </Route>
           </Switch>
         </BrowserRouter>

@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // import { createOrder, createWorkorder } from '../../Slice/workorder-slice';
 
 
+
 export const CreateOffers = ({ id: order_id }) => {
   const [formData, setFormData] = useState('')
   const [error, setError] = useState(false)
@@ -41,7 +42,7 @@ export const CreateOffers = ({ id: order_id }) => {
         <textarea name='message' rows='6' columns='10' required
         onChange={e => setFormData(e.target.value)} value={formData}/>
       </label>
-      <input type='submit' value="Submit"/>
+      <input type='submit' value="Submit" />
     </form>
   )
 }

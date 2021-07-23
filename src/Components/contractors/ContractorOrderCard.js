@@ -1,32 +1,33 @@
-import { useDispatch } from 'react-redux';
-import { CreateOffers } from '../contractors/CreateOffers'
+import { useState } from 'react';
+import { CreateOffers } from '../contractors/CreateOffers';
+import { Gallery } from '../Gallery';
+import Popup from '../Popup/Popup';
 
 export const ContractorOrderCard = ({ order }) => {
-    const dispatch = useDispatch();
+    const [isOpen, setIsOpen] = useState(false);
     const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink,
-         start_date: startDate, work_done: workDone }
+        start_date: startDate}
         = order;
 
-    // const descLength = description.length;
     const date = new Date(startDate)
     date.setHours(date.getHours() + 2);
-    // const role = localStorage.getItem('role');
 
-    const image_style = {
-        maxWidth: '20%',
-        maxHight: '20%'
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
     }
 
     return (
         <div>
             <p>Work Order:</p>
-            {imgLink.map((image, i) => <img style={image_style} key={`${image}+${i}`} src={image} alt="look here, it's a naked crocodile" />)}
+            {/* {imgLink.map((image, i) => <img style={image_style} key={`${image}+${i}`} src={image} alt="look here, it's a naked crocodile" />)} */}
+            <Gallery imageLinkArray={imgLink} />
             <h3>{title}</h3>
             <p>{description}</p>
             <h4>Adress</h4>
             <p>{street}</p>
             <p>{postalCode}</p>
             <p>{city}</p>
+
             <CreateOffers id={id} />
         </div>
     )

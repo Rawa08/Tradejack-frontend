@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { createOrder, createWorkorder } from '../../Slice/workorder-slice';
 
 
-const CreateOrder = ({setNewOrderBoolean, newOrderBoolean}) => {
+const CreateOrder = ({setNewOrderBoolean, newOrderBoolean, setIsOpen}) => {
   const dispatch = useDispatch();
   const date = new Date();
   date.setDate(date.getDate() + 2);
@@ -59,6 +59,7 @@ const CreateOrder = ({setNewOrderBoolean, newOrderBoolean}) => {
     dispatch(createWorkorder({ ...order, image_link: previewSource }));
     setOrder(initialState);
     setNewOrderBoolean(!newOrderBoolean);
+    setIsOpen(false);
   }
 
   return (

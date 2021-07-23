@@ -60,3 +60,27 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.form__login{
+  margin:1rem;
+  box-shadow: 6px 3px 17px -5px rgba(0,0,0,0.24);
+  padding: 1rem;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+.loginForm{
+  display:flex;
+  flex-direction: column;
+}
+
+.ninja-button{
+  padding: 0.5rem;
+  border-radius: 20px;
+  max-width: 80px;
+  border: none;
+}
+
+.input-field{
+  margin-bottom: 0.1;
+}

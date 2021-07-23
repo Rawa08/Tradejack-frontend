@@ -1,8 +1,10 @@
 import { WorkorderList } from "../Components/clients/WorkorderList";
+import '../Margin.css';
+
 
 export const Home = () => {
   return (
-    <div>
+    <div className='container'>
       <h2>Home Page</h2>
 
       <p>Fill with Lorem Ipsum</p>
@@ -12,7 +14,7 @@ export const Home = () => {
 
 export const ClientHome = () => {
   return (
-    <div>
+    <div className='container'>
       <h2>Your friendly client Home Page</h2>
 
       <p>Fill with Lorem Ipsum about clients</p>
@@ -25,7 +27,7 @@ export const ClientHome = () => {
 
 export const ContractorHome = () => {
   return (
-    <div>
+    <div className='container'>
       <h2>Your friendly Contractor Home Page</h2>
 
       <p>Fill with Lorem Ipsum about Contractors</p>

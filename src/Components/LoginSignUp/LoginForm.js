@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import PersonIcon from '@material-ui/icons/Person';
 
 
 export const LoginForm = ({roleState, setUserRole}) => {
@@ -44,17 +46,20 @@ export const LoginForm = ({roleState, setUserRole}) => {
   }
 
   return(
-    <form onSubmit={handleSubmit}>
-      {error && <h3>{error}</h3>}
-      <label htmlFor="usernameInput">Username:
-        <input type="text" name="usernameInput" value={usernameSt}
-        onChange={e=> setUsername(e.target.value)}/>
-      </label>
-      <label htmlFor="passwordInput">Password:
-        <input type="password" name="passwordInput" value={passwordSt}
-        onChange={e=> setPassword(e.target.value)}/>
-      </label>
-      <input type="submit"></input>
-    </form>
+      <form onSubmit={handleSubmit} className="loginForm">
+        {error && <h3>{error}</h3>}
+        <label htmlFor="usernameInput"><PersonIcon color="disabled" />
+          <input type="text" name="usernameInput" value={usernameSt}
+          className='input-field'
+          onChange={e=> setUsername(e.target.value)} required placeholder="Username"/>
+        </label>
+        <label htmlFor="passwordInput"><VpnKeyIcon color="disabled"/>
+          <input type="password" name="passwordInput" value={passwordSt}
+          className='input-field'
+          onChange={e=> setPassword(e.target.value)} required placeholder="Password"/>
+        </label>
+        <p></p>
+        <input className='ninja-button' type="submit"></input>
+      </form>
   )
 }

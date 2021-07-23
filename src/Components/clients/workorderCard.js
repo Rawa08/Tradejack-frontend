@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeDoneStatus, fetchWorkOffers } from '../../Slice/workorder-slice'
-import { CreateOffers } from '../contractors/CreateOffers'
 import { WorkOfferCard } from './WorkOfferCard';
+import {Gallery} from '../Gallery';
+
 
 export const WorkOrderCard = ({ order }) => {
     const dispatch = useDispatch();
@@ -18,10 +19,10 @@ export const WorkOrderCard = ({ order }) => {
         backgroundColor: workDone ? "red" : "transparent"
     }
 
-    const image_style = {
-        maxWidth: '20%',
-        maxHight: '20%'
-    }
+    // const image_style = {
+    //     maxWidth: '20%',
+    //     maxHight: '20%'
+    // }
 
     useEffect(() => {
         dispatch(fetchWorkOffers(id))
@@ -34,7 +35,8 @@ export const WorkOrderCard = ({ order }) => {
     return (
         <div style={redRawa}>
             <p>Work Order:</p>
-            {imgLink.map(image => <img style={image_style} key={image} src={image} alt="look here, it's a naked crocodile" />)}
+           <Gallery imageLinkArray={imgLink} />
+            {/* {imgLink.map(image => <img style={image_style} key={image} src={image} alt="look here, it's a naked crocodile" />)} */}
             <h3>{title}</h3>
             <p>{description}</p>
             <h4>Adress</h4>
@@ -42,15 +44,11 @@ export const WorkOrderCard = ({ order }) => {
             <p>{postalCode}</p>
             <p>{city}</p>
             <button onClick={onDone}>Order Done</button>
-            <CreateOffers id={id} />
             <div className='Offer-holder'>
                 {order.workOffers && order.workOffers.map(offer => (
                     <WorkOfferCard key={offer.id} offer={offer} />
                 ))}
             </div>
-            {/* {role === 'client' ? offers.map(offer => {
-                <WorkOfferCard/>
-            }) : <createWorkOffer id={id}/>} */}
         </div>
     )
 }
