@@ -21,9 +21,11 @@ export const Login = ({setUserRole}) => {
   return (
     <div className='formthing'>
     <div className='form__login'>
+
       <label className="switch">
         <input type="checkbox" onChange={toggleState}/>
           <span className="slider round"></span>
+
         </label>
         <h4>{roleState === 'client' ? 'Client' : 'Contractor'} Log in</h4>
         <LoginForm roleState={roleState} setUserRole={setUserRole}/>

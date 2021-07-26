@@ -61,10 +61,21 @@ const workorderSlice = createSlice({
         changeDoneStatus: (state, action) => {
             state.entities.find(entity => {
                 if (entity.id === action.payload) {
+                    axios.put(`http://localhost:3000/api/work/workorders/${entity.id}`, {
+                        'updatetype': 'work_done',
+                        'data': !entity.work_done
+                    }, {
+                    headers: {
+                        'authorization': localStorage.getItem('accessToken')
+                    }
+                });
                     return entity.work_done = !entity.work_done
                 }
                 return entity.work_done;
             })
+        },
+        filterOrder: (state, action) => {
+            state.entities.filter(entity => entity.work_done)
         },
         createOrder: (state, action) => {
             state.entities = [...state.entities, action.payload]

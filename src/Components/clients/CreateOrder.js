@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './CreateOrder.css';
 import { useDispatch } from 'react-redux';
-import { createOrder, createWorkorder } from '../../Slice/workorder-slice';
+import { createWorkorder } from '../../Slice/workorder-slice';
 
 
 const CreateOrder = ({setNewOrderBoolean, newOrderBoolean, setIsOpen}) => {
@@ -55,7 +55,7 @@ const CreateOrder = ({setNewOrderBoolean, newOrderBoolean, setIsOpen}) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(createOrder({ ...order, image_link: previewSource }));
+    // dispatch(createOrder({ ...order, image_link: previewSource }));
     dispatch(createWorkorder({ ...order, image_link: previewSource }));
     setOrder(initialState);
     setNewOrderBoolean(!newOrderBoolean);

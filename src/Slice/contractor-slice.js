@@ -14,6 +14,19 @@ export const fetchAllWorkOrders = createAsyncThunk(
     }
 )
 
+export const fetchAllAssignedWorkOrders = createAsyncThunk(
+    'contractor/fetchAsigned',
+    async (id, thunkapi) => {
+        const res = await axios.get(`http://localhost:3000/api/work/workorders/contractors?${id}`, {
+            headers: {
+                'authorization': localStorage.getItem('accessToken')
+            }
+        });
+
+        return res.data;
+    }
+)
+
 const initialState = { status: 'idle', entities: [] };
 
 const contractorSlice = createSlice({
@@ -28,7 +41,13 @@ const contractorSlice = createSlice({
         builders
             .addCase(fetchAllWorkOrders.fulfilled, (state, action) => {
                 state.status = 'done';
-                state.entities = [...action.payload];
+                console.log('entity.work_done')
+                const filteredPayload = action.payload.filter(entity => !entity.work_done
+                )
+                state.entities = [...filteredPayload];
+            })
+            .addCase(fetchAllAssignedWorkOrders.fulfilled, (state, action) => {
+                console.log(action.payload)
             })
     }
 });

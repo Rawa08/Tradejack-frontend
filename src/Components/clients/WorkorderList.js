@@ -26,11 +26,6 @@ export const WorkorderList = () => {
     }
 
     return (
-        <div>
-        <div>
-
-        </div>
-
         <div className="order-list">
             <input
                 type="button"
@@ -45,7 +40,6 @@ export const WorkorderList = () => {
             {orders.entities.map(order => (
                 <OrderCard order={order} key={order.id} />
             ))}
-        </div>
         </div>
     )
 }

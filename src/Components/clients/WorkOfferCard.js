@@ -28,12 +28,14 @@ export const WorkOfferCard = ({ offer }) => {
       <h5>{phone_num}</h5>
       <p>{message_field}</p>
       <p>{chosen}</p>
+      <div className=''>
       {role === 'client' ? <label className="switch">
 
-        <input type="checkbox" onChange={toggleChosen} />
+        <input type="checkbox" onChange={toggleChosen} className=''/>
         <span className="slider round"></span>
       </label> : { chosenState } && <p>Your offer has been accepted</p>}
       <p><small>{ts}</small></p>
+      </div>
     </div>
   )
 }

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import './clientSign.css'
+import './SignupForm.css'
 
-export const SignupFormClient = () => {
+export const SignupFormClient = ({ togglePopup }) => {
   const history = useHistory();
   const [formData, setFormData] = useState({
     username: '',
@@ -40,71 +40,53 @@ export const SignupFormClient = () => {
     }
     const status = await signUpfetch(formData);
     const data = await status.json();
-    if(data.message){
-        setError('Bad luck, Username Already Taken, please choose a new one')
-        return;
+    if (data.message) {
+      setError('Bad luck, Username Already Taken, please choose a new one')
+      return;
     }
     else {
-    setFormData({
-      username: '',
-      password: '',
-      passwordRepeat: '',
-      f_name: '',
-      l_name: '',
-      email: '',
-      phone_num: '',
-      street: '',
-      postal_code: '',
-      city: ''
-    })
-    return history.push('/login');}
+      setFormData({
+        username: '',
+        password: '',
+        passwordRepeat: '',
+        f_name: '',
+        l_name: '',
+        email: '',
+        phone_num: '',
+        street: '',
+        postal_code: '',
+        city: ''
+      })
+      togglePopup();
+      return history.push('/login');
+    }
 
   }
   return (
     <form onSubmit={handleSubmit} className='form__client'>
       {error && <h3>{error}</h3>}
-      <label htmlFor="usernameInput">Username:
-        <input type="text" name="usernameInput" value={formData.username} required
-          onChange={e => setFormData(prevstate => ({ ...prevstate, username: e.target.value }))} />
-      </label>
-      <label htmlFor="fNameInput">First Name:
-        <input type="text" name="fNameInput" value={formData.f_name} required
-          onChange={e => setFormData(prevstate => ({ ...prevstate, f_name: e.target.value }))} />
-      </label>
-      <label htmlFor="lNameInput">Last Name:
-        <input type="text" name="lNameInput" value={formData.l_name} required
-          onChange={e => setFormData(prevstate => ({ ...prevstate, l_name: e.target.value }))} />
-      </label>
-      <label htmlFor="emailInput">Email:
-        <input type="email" name="emailInput" value={formData.email} required
-          onChange={e => setFormData(prevstate => ({ ...prevstate, email: e.target.value }))} />
-      </label>
-      <label htmlFor="phoneNumInput">Phone Number:
-        <input type="tel" name="phoneNumInput" value={formData.phone_num} required
-          onChange={e => setFormData(prevstate => ({ ...prevstate, phone_num: e.target.value }))} />
-      </label>
+      <input type="text" name="usernameInput" value={formData.username} required
+        className='signup__input' placeholder='username' onChange={e => setFormData(prevstate => ({ ...prevstate, username: e.target.value }))} />
+      <input type="text" name="fNameInput" value={formData.f_name} required
+        className='signup__input' placeholder='First Name' onChange={e => setFormData(prevstate => ({ ...prevstate, f_name: e.target.value }))} />
+      <input type="text" name="lNameInput" value={formData.l_name} required
+        className='signup__input' placeholder='Last Name' onChange={e => setFormData(prevstate => ({ ...prevstate, l_name: e.target.value }))} />
+      <input type="email" name="emailInput" value={formData.email} required
+        className='signup__input' placeholder='Email' onChange={e => setFormData(prevstate => ({ ...prevstate, email: e.target.value }))} />
+      <input type="tel" name="phoneNumInput" value={formData.phone_num} required
+        className='signup__input' placeholder='Phone Number' onChange={e => setFormData(prevstate => ({ ...prevstate, phone_num: e.target.value }))} />
       <h4>Adress:</h4>
-      <label htmlFor="streetInput">Street:
-        <input type="text" name="streetInput" value={formData.street} required
-          onChange={e => setFormData(prevstate => ({ ...prevstate, street: e.target.value }))} />
-      </label>
-      <label htmlFor="postalcodeInput">Postal Code:
-        <input type="number" name="postalcodeInput" value={formData.postal_code} required
-          onChange={e => setFormData(prevstate => ({ ...prevstate, postal_code: e.target.value }))} />
-      </label>
-      <label htmlFor="cityInput">City:
-        <input type="text" name="cityInput" value={formData.city} required
-          onChange={e => setFormData(prevstate => ({ ...prevstate, city: e.target.value }))} />
-      </label>
-      <label htmlFor="passwordInput">Password:
-        <input type="password" name="passwordInput" value={formData.password} required
-          onChange={e => setFormData(prevstate => ({ ...prevstate, password: e.target.value }))} />
-      </label>
-      <label htmlFor="passwordRepeatInput">Repeat Password:
-        <input type="password" name="passwordRepeatInput" value={formData.passwordRepeat} required
-          onChange={e => setFormData(prevstate => ({ ...prevstate, passwordRepeat: e.target.value }))} />
-      </label>
-      <input type="submit"></input>
+      <input type="text" name="streetInput" value={formData.street} required
+        className='signup__input' placeholder='Street' onChange={e => setFormData(prevstate => ({ ...prevstate, street: e.target.value }))} />
+      <input type="number" name="postalcodeInput" value={formData.postal_code} required
+        className='signup__input' placeholder='Postal Code' onChange={e => setFormData(prevstate => ({ ...prevstate, postal_code: e.target.value }))} />
+      <input type="text" name="cityInput" value={formData.city} required
+        className='signup__input' placeholder='City' onChange={e => setFormData(prevstate => ({ ...prevstate, city: e.target.value }))} />
+      <input type="password" name="passwordInput" value={formData.password} required
+        className='signup__input' placeholder='Password' onChange={e => setFormData(prevstate => ({ ...prevstate, password: e.target.value }))} />
+      <input type="password" name="passwordRepeatInput" value={formData.passwordRepeat} required
+        className='signup__input' placeholder='Retype Password' onChange={e => setFormData(prevstate => ({ ...prevstate, passwordRepeat: e.target.value }))} />
+      <input type="submit" value='Create User'></input>
     </form>
   )
 }

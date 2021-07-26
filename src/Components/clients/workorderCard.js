@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeDoneStatus, fetchWorkOffers } from '../../Slice/workorder-slice'
 import { WorkOfferCard } from './WorkOfferCard';
@@ -9,7 +9,6 @@ export const WorkOrderCard = ({ order }) => {
     const dispatch = useDispatch();
     const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink, start_date: startDate, work_done: workDone }
         = order;
-
     // const descLength = description.length;
     const date = new Date(startDate)
     date.setHours(date.getHours() + 2);
@@ -18,15 +17,15 @@ export const WorkOrderCard = ({ order }) => {
         textDecoration: workDone ? "line-through" : "none",
         backgroundColor: workDone ? "red" : "transparent"
     }
+    const [here, setHere] = useState(false)
 
-    // const image_style = {
-    //     maxWidth: '20%',
-    //     maxHight: '20%'
-    // }
+    useEffect(() => {
+        setHere(!here)
+    },[])
 
     useEffect(() => {
         dispatch(fetchWorkOffers(id))
-    }, [dispatch, id])
+    }, [dispatch, id, here])
 
     const onDone = () => {
         dispatch(changeDoneStatus(id))

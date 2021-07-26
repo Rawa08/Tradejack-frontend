@@ -12,7 +12,7 @@ export const Navbar = ({userRole, setUserRole}) => {
     history.push('/')
   }
  const isBootActive = true
-
+console.log(userRole)
  if(!isBootActive){
   return (
     <nav className='nav'>
@@ -45,6 +45,7 @@ export const Navbar = ({userRole, setUserRole}) => {
     </nav>
   )
  } else {
+
   return (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark nav">
     <div className='navbar__mobile'>
@@ -58,7 +59,7 @@ export const Navbar = ({userRole, setUserRole}) => {
       <li className='nav__point nav-item'>
           <Link to='/' className="nav__link">Home</Link>
         </li>
-        {userRole && <li className='nav__point nav-item'>
+        {userRole === 'client' && <li className='nav__point nav-item'>
           <Link to='/orders' className="nav-link nav__link">Work Orders</Link>
         </li>}
         <li className='nav__point'>
@@ -81,5 +82,6 @@ export const Navbar = ({userRole, setUserRole}) => {
     </div>
   </nav>
   )
+
  }
 }

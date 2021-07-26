@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { CreateOffers } from '../contractors/CreateOffers';
 import { Gallery } from '../Gallery';
 import Popup from '../Popup/Popup';
+import './ContractorOrderCard.css';
 
 export const ContractorOrderCard = ({ order }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink,
-        start_date: startDate}
+        start_date: startDate }
         = order;
 
     const date = new Date(startDate)
@@ -17,17 +18,25 @@ export const ContractorOrderCard = ({ order }) => {
     }
 
     return (
-        <div>
-            <p>Work Order:</p>
+        <div className="order-card">
+
             {/* {imgLink.map((image, i) => <img style={image_style} key={`${image}+${i}`} src={image} alt="look here, it's a naked crocodile" />)} */}
             <Gallery imageLinkArray={imgLink} />
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <h4>Adress</h4>
-            <p>{street}</p>
-            <p>{postalCode}</p>
-            <p>{city}</p>
-            {isOpen && <Popup content={<CreateOffers id={id} />} toggle={togglePopup}/>}
+            <h3 className="order-title">{title}</h3>
+            <p className="order-description">{description}</p>
+            <h4 className="adress-title">Adress</h4>
+            <p className="order-street">{street}</p>
+            <p className="order-postal">{postalCode}</p>
+            <p className="order-city">{city}</p>
+            <input
+                type="button"
+                value="Offer your services"
+                onClick={togglePopup}
+                className='newOrder'
+            />
+            <div className='offer-pop'>
+                {isOpen && <Popup content={<CreateOffers id={id} togglePopup={togglePopup} />} togglePopup={togglePopup} />}
+            </div>
         </div>
     )
 }

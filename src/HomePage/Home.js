@@ -1,4 +1,5 @@
 import { WorkorderList } from "../Components/clients/WorkorderList";
+import {WorkOrders} from '../Components/contractors/WorkOrders'
 import '../Margin.css';
 
 
@@ -34,6 +35,7 @@ export const ContractorHome = () => {
       <h2>Your friendly Contractor Home Page</h2>
 
       <p>Fill with Lorem Ipsum about Contractors</p>
+      <WorkOrders />
     </div>
   )
 }

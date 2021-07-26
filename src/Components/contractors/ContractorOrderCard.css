@@ -1,0 +1,32 @@
+.card-title {
+    margin-bottom: 20px;
+}
+
+
+.order-title, .order-description, .adress-title, .order-street, .order-city {
+    text-transform: capitalize;
+}
+
+/* .order-postal {} */
+
+.order-card input[type=button]{
+    padding: 2px;
+    border-radius: 5px;
+    border: #343a40;
+    color: white;
+    background-color: #343a40;
+    }
+
+
+@media (max-width: 680px) {
+    .order-card {
+        width: 100%;
+        margin-top: 40px;
+        margin-bottom: 60px;
+    }
+
+    .order-card input[type=button]{
+        width: 100%;
+
+        }
+}

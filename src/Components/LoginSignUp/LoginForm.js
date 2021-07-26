@@ -59,7 +59,7 @@ export const LoginForm = ({roleState, setUserRole}) => {
           onChange={e=> setPassword(e.target.value)} required placeholder="Password"/>
         </label>
         <p></p>
-        <input className='ninja-button' type="submit"></input>
+        <input className='ninja-button' type="submit" value='Login'></input>
       </form>
   )
 }

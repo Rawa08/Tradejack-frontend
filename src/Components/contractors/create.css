@@ -1,0 +1,15 @@
+.offerForm{
+  display: flex;
+  flex-direction: column;
+}
+
+.offerForm__btn{
+  background-color: #343a40;
+  color:white;
+}
+
+.offerForm__text{
+  width:100%;
+  padding: 3px;
+  text-transform: capitalize;
+}

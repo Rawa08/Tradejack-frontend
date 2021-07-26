@@ -1,10 +1,10 @@
 import React from 'react';
 import { SignupFormClient } from './SignupFormClient';
-import {SignupFormContractor} from './SignupFormContractor';
+import { SignupFormContractor } from './SignupFormContractor';
 import './Signup.css'
 import { useState } from 'react';
 
-export const Signup = ({togglePopup}) => {
+export const Signup = ({ togglePopup }) => {
   const [roleState, setRoleState] = useState('client');
 
   const toggleState = () => {
@@ -15,12 +15,12 @@ export const Signup = ({togglePopup}) => {
   return (
     <div>
       <label className="switch">
-        <input type="checkbox" onChange={toggleState}/>
-          <span className="slider round"></span>
-        </label>
-        <h4>{roleState} Sign Up</h4>
-        {roleState === 'client' ? <SignupFormClient togglePopup={togglePopup}/>
-          : <SignupFormContractor togglePopup={togglePopup}/> }
+        <input type="checkbox" onChange={toggleState} />
+        <span className="slider round"></span>
+      </label>
+      <h4>{roleState === 'client' ? 'Client' : 'Contractor'} Sign Up</h4>
+      {roleState === 'client' ? <SignupFormClient togglePopup={togglePopup} />
+        : <SignupFormContractor togglePopup={togglePopup} />}
     </div>
-      )
+  )
 }

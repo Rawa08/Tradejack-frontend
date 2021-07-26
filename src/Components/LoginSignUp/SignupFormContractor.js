@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-export const SignupFormContractor = () => {
+export const SignupFormContractor = ({togglePopup}) => {
   const history = useHistory();
   const [formData, setFormData] = useState({
     username:'',
@@ -62,6 +62,7 @@ export const SignupFormContractor = () => {
         city:'',
         passwordRepeat:''
       })
+     togglePopup()
      return history.push('/login');
   }
 
@@ -118,7 +119,7 @@ export const SignupFormContractor = () => {
         <input type="password" name="passwordRepeatInput" value={formData.passwordRepeat} required
         onChange={e=> setFormData(prevstate => ({...prevstate, passwordRepeat:e.target.value}))}/>
       </label>
-      <input type="submit"></input>
+      <input type="submit" value='Create User'></input>
     </form>
   )
 }
