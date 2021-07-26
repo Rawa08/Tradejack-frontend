@@ -62,6 +62,9 @@ console.log(userRole)
         {userRole === 'client' && <li className='nav__point nav-item'>
           <Link to='/orders' className="nav-link nav__link">Work Orders</Link>
         </li>}
+        {userRole === 'contractor' && <li className='nav__point nav-item'>
+          <Link to='/myorders' className="nav-link nav__link">My offeres</Link>
+        </li>}
         <li className='nav__point'>
           <Link to='/about' className="nav-link nav__link nav-item">About</Link>
         </li>

@@ -74,11 +74,19 @@ const workorderSlice = createSlice({
                 return entity.work_done;
             })
         },
-        filterOrder: (state, action) => {
-            state.entities.filter(entity => entity.work_done)
-        },
         createOrder: (state, action) => {
             state.entities = [...state.entities, action.payload]
+        },
+        orderFilter: (state, action) => {
+            console.log(state.entities)
+            const { searchField, searchText } = action.payload;
+            if(searchField === 'title'){
+                state.entities = state.entities.filter(entity => entity.title.includes(searchText))
+            }
+            if(searchField === 'desc'){
+                state.entities = state.entities.filter(entity => entity.description.includes(searchText))
+            }
+
         }
     },
     extraReducers: (builders) => {
@@ -111,6 +119,6 @@ const workorderSlice = createSlice({
 });
 
 
-export const { changeDoneStatus, createOrder } = workorderSlice.actions;
+export const { changeDoneStatus, createOrder, orderFilter } = workorderSlice.actions;
 export default workorderSlice.reducer;
 

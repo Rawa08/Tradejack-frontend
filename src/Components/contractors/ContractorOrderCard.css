@@ -1,3 +1,27 @@
+.search-form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px
+}
+
+.search-label, .search-input, .form-select{
+    width: 80%;
+margin:5px;
+outline: none;
+}
+
+.search-input{
+border: #343a40 1px  solid;
+    border-radius: 5px;
+    padding:2px;
+    outline: none;
+}
+
+
+
+
 .card-title {
     margin-bottom: 20px;
 }
@@ -9,14 +33,34 @@
 
 /* .order-postal {} */
 
-.order-card input[type=button]{
+.order-card input[type=button], .search-button{
+    margin:5px;
     padding: 2px;
     border-radius: 5px;
     border: #343a40;
     color: white;
     background-color: #343a40;
     }
+.myoffer_field >p{
+    border: #343a40 solid 1px;
+}
+.myoffer_field > h5{
+    margin-bottom: 0;
+    text-decoration: underline;
+}
 
+.order-card h5 {
+    margin-top: 1rem;
+}
+
+.order-card h5, .order-card p {
+    margin-bottom: 0px;
+}
+
+.client-data{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
 
 @media (max-width: 680px) {
     .order-card {
@@ -25,7 +69,7 @@
         margin-bottom: 60px;
     }
 
-    .order-card input[type=button]{
+    .order-card input[type=button], .search-button{
         width: 100%;
 
         }

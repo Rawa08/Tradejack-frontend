@@ -15,9 +15,9 @@ export const fetchAllWorkOrders = createAsyncThunk(
 )
 
 export const fetchAllAssignedWorkOrders = createAsyncThunk(
-    'contractor/fetchAsigned',
+    'contractor/fetchAssigned',
     async (id, thunkapi) => {
-        const res = await axios.get(`http://localhost:3000/api/work/workorders/contractors?${id}`, {
+        const res = await axios.get(`http://localhost:3000/api/work/workorders/contractor/${id}`, {
             headers: {
                 'authorization': localStorage.getItem('accessToken')
             }
@@ -35,6 +35,17 @@ const contractorSlice = createSlice({
     reducers: {
         createOffer: (state, action) => {
             state.entities = [...state.entities, action.payload]
+        },
+        orderFilter: (state, action) => {
+            console.log(state.entities)
+            const { searchField, searchText } = action.payload;
+            if(searchField === 'title'){
+                state.entities = state.entities.filter(entity => entity.title.includes(searchText))
+            }
+            if(searchField === 'desc'){
+                state.entities = state.entities.filter(entity => entity.description.includes(searchText))
+            }
+
         }
     },
     extraReducers: (builders) => {
@@ -47,11 +58,15 @@ const contractorSlice = createSlice({
                 state.entities = [...filteredPayload];
             })
             .addCase(fetchAllAssignedWorkOrders.fulfilled, (state, action) => {
-                console.log(action.payload)
+                state.status = 'done';
+                const filteredPayload = action.payload.filter(entity => !entity.work_done
+                    )
+                    state.entities = [...filteredPayload];
+                console.log('Assigned', filteredPayload)
             })
     }
 });
 
 
-export const { createOffer } = contractorSlice.actions;
+export const { createOffer, orderFilter } = contractorSlice.actions;
 export default contractorSlice.reducer;

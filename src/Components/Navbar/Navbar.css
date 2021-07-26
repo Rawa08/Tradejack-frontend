@@ -12,6 +12,7 @@
   font-size: 1rem;
   margin: 0;
   z-index: 2;
+  display: none;
 }
 
 .navbar__button{
@@ -66,6 +67,12 @@
 }
 
 @media only screen and (min-width: 990px)  {
+  .nav{
+    display: flex;
+  }
+  .footer {
+    display: none;
+  }
   .nav__point{
     margin: 1rem;
     list-style-type: none;
