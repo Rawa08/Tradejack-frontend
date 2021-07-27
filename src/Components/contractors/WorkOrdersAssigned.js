@@ -11,7 +11,7 @@ export const WorkOrdersAssigned = () => {
   console.log(orders.entities)
 
   useEffect(() => {
-    dispatch(fetchAllAssignedWorkOrders('e234a891-d7d2-478c-a816-3bce0c6b23db'))
+    dispatch(fetchAllAssignedWorkOrders())
   }, [dispatch]);
 
   if (orders.status !== 'done') {

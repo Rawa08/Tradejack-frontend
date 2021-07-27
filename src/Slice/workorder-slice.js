@@ -9,7 +9,6 @@ export const fetchWorkorders = createAsyncThunk(
                 'authorization': localStorage.getItem('accessToken')
             }
         });
-
         return res.data;
     }
 )
@@ -22,7 +21,6 @@ export const fetchAllWorkOrder = createAsyncThunk(
                 'authorization': localStorage.getItem('accessToken')
             }
         });
-
         return res.data;
     }
 )
@@ -35,7 +33,6 @@ export const createWorkorder = createAsyncThunk(
                 'authorization': localStorage.getItem('accessToken')
             }
         });
-
         return res.data;
     }
 );
@@ -60,15 +57,24 @@ const workorderSlice = createSlice({
     reducers: {
         changeDoneStatus: (state, action) => {
             state.entities.find(entity => {
+                const now = !entity.work_done ? new Date() : null
                 if (entity.id === action.payload) {
-                    axios.put(`http://localhost:3000/api/work/workorders/${entity.id}`, {
+                    axios.put(`http://localhost:3000/api/work/workorders/${action.payload}`, {
                         'updatetype': 'work_done',
                         'data': !entity.work_done
                     }, {
-                    headers: {
-                        'authorization': localStorage.getItem('accessToken')
-                    }
-                });
+                        headers: {
+                            'authorization': localStorage.getItem('accessToken')
+                        }
+                    });
+                    axios.put(`http://localhost:3000/api/work/workorders/${action.payload}`, {
+                            'updatetype': 'end_date',
+                            'data': now
+                        }, {
+                        headers: {
+                            'authorization': localStorage.getItem('accessToken')
+                        }
+                    });
                     return entity.work_done = !entity.work_done
                 }
                 return entity.work_done;
@@ -93,7 +99,8 @@ const workorderSlice = createSlice({
         builders
             .addCase(fetchWorkorders.fulfilled, (state, action) => {
                 state.status = 'done';
-                state.entities = [...action.payload];
+                const sorted = action.payload.sort((a, b) => (a.work_done - b.work_done))
+                state.entities = [...sorted];
             })
             .addCase(fetchAllWorkOrder.fulfilled, (state, action) => {
                 state.status = 'done';

@@ -28,10 +28,12 @@ export const CreateOffers = ({ id: order_id, togglePopup }) => {
       }, 2000);
       return
     }
-    console.log(formData)
-    const payload ={message_field:formData, order_id, contractor_id}
+    const payload ={message_field:formData, order_id}
     console.log(payload);
-    await axios.post('http://localhost:3000/api/work/workoffers', payload)
+    await axios.post('http://localhost:3000/api/work/workoffers', payload, {
+      headers: {
+          'authorization': localStorage.getItem('accessToken')
+      }})
     setFormData('');
     togglePopup();
     return

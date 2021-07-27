@@ -7,3 +7,36 @@
   display:flex;
   flex-direction: column;
 }
+
+.worder-card{
+  box-shadow: 1px 5px 29px -2px rgba(0,0,0,0.36);
+  margin: 0.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: black;
+  padding-top: 0;
+}
+
+.worder-card__text{
+  margin-top: 0;
+  padding-top: 0;
+  text-decoration: none;
+  color: black;
+}
+
+.worder-card__text:hover{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.worder-card > button{
+  margin: 1rem;
+}
+
+.worder-card__text{
+  padding: 1rem;
+}
+
+.worder-card__text--date {
+  text-align: end;
+}

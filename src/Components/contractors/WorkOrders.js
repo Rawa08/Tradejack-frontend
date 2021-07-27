@@ -58,7 +58,7 @@ export const WorkOrders = () => {
           </select>
           <input className="search-button" type="button" value="Search" onClick={e => submitSearch(e)}/>
         </form></div>
-      {orders && orders.entities.map(order => <ContractorOrderCard key={order.id} order={order} />)}
+      {orders && orders.entities.map(order => <ContractorOrderCard key={order.id} order={order}/>)}
     </div>
   )
 

@@ -9,7 +9,7 @@ export const ContractorOrderCardOffer = ({ order }) => {
     const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink,
         start_date: startDate, message_field, forename, lastname, clientmail, clientphone }
         = order;
-
+    const mailto = `mailto: ${clientmail}`
     const date = new Date(startDate)
     date.setHours(date.getHours() + 2);
 
@@ -18,7 +18,7 @@ export const ContractorOrderCardOffer = ({ order }) => {
     }
 
     return (
-        <div className="order-card">
+        <div className="order-card order-card--offer">
 
             {/* {imgLink.map((image, i) => <img style={image_style} key={`${image}+${i}`} src={image} alt="look here, it's a naked crocodile" />)} */}
             <Gallery imageLinkArray={imgLink} />
@@ -36,7 +36,7 @@ export const ContractorOrderCardOffer = ({ order }) => {
                 </div>
                 <div>
                 <h5 className='client-email'>Email:</h5>
-                <p>{clientmail}</p>
+                <p><a href={mailto}>{clientmail}</a></p>
                 </div>
                 <div>
                 <h5 className="adress-title">Address</h5>

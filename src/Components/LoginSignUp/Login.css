@@ -109,3 +109,16 @@ input:checked + .slider:before {
 .toggle-size{
   max-width: 10px;
 }
+
+.rating-message{
+  margin:auto;
+
+  background-color: #dc3545;
+  font-size: .75em;
+  font-weight: 700;
+  line-height: 2;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  border-radius: 5px;
+}

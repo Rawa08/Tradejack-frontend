@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { changeDoneStatus, fetchWorkOffers } from '../../Slice/workorder-slice'
 import { WorkOfferCard } from './WorkOfferCard';
 import {Gallery} from '../Gallery';
-import { Link } from 'react-router-dom';
 
 
 export const WorkOrderCard = ({ order }) => {
@@ -33,32 +32,34 @@ export const WorkOrderCard = ({ order }) => {
         setHere(!here)
     },[])
 
+    useEffect(() => {
+        dispatch(fetchWorkOffers(id))
+    }, [dispatch, id, here])
 
     const onDone = () => {
         dispatch(changeDoneStatus(id))
     }
 
     return (
-        <>
-            <div className='worder-card' style={redRawa}>
-            <Link to={`/order/${id}`} style={{ textDecoration: 'none' }}>
-            <Gallery imageLinkArray={imgLink} />
-                {/* {imgLink.map(image => <img style={image_style} key={image} src={image} alt="look here, it's a naked crocodile" />)} */}
-                <div className='worder-card__text'>
-                    <div className='worder-card__text--date'>Registered: {shownDate}</div>
-                    <h3>{title}</h3>
-                    <p>{description}</p>
-                    <h4>Adress</h4>
-                    <p>{street}</p>
-                    <p>{postalCode}</p>
-                    <p>{city}</p>
-
-                </div>
-                </Link>
+        <div className='worder-card' style={redRawa}>
+           <Gallery imageLinkArray={imgLink} />
+            {/* {imgLink.map(image => <img style={image_style} key={image} src={image} alt="look here, it's a naked crocodile" />)} */}
+            <div className='worder-card__text'>
+                <div className='worder-card__text--date'>Registered: {shownDate}</div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <h4>Adress</h4>
+                <p>{street}</p>
+                <p>{postalCode}</p>
+                <p>{city}</p>
                 <button onClick={onDone}>Order Done</button>
+                <div className='Offer-holder'>
+                    {order.workOffers && order.workOffers.map(offer => (
+                        <WorkOfferCard key={offer.id} offer={offer} client={author_id} />
+                    ))}
+                </div>
             </div>
-
-        </>
+        </div>
     )
 }
 

@@ -17,12 +17,11 @@ export const fetchAllWorkOrders = createAsyncThunk(
 export const fetchAllAssignedWorkOrders = createAsyncThunk(
     'contractor/fetchAssigned',
     async (id, thunkapi) => {
-        const res = await axios.get(`http://localhost:3000/api/work/workorders/contractor/${id}`, {
+        const res = await axios.get(`http://localhost:3000/api/work/workorders/contractor`, {
             headers: {
                 'authorization': localStorage.getItem('accessToken')
             }
         });
-
         return res.data;
     }
 )
@@ -37,13 +36,12 @@ const contractorSlice = createSlice({
             state.entities = [...state.entities, action.payload]
         },
         orderFilter: (state, action) => {
-            console.log(state.entities)
             const { searchField, searchText } = action.payload;
             if(searchField === 'title'){
-                state.entities = state.entities.filter(entity => entity.title.includes(searchText))
+                state.entities = state.entities.filter(entity => entity.title.toLowerCase().includes(searchText.toLowerCase()))
             }
             if(searchField === 'desc'){
-                state.entities = state.entities.filter(entity => entity.description.includes(searchText))
+                state.entities = state.entities.filter(entity => entity.description.toLowerCase().includes(searchText.toLowerCase()))
             }
 
         }
@@ -52,7 +50,6 @@ const contractorSlice = createSlice({
         builders
             .addCase(fetchAllWorkOrders.fulfilled, (state, action) => {
                 state.status = 'done';
-                console.log('entity.work_done')
                 const filteredPayload = action.payload.filter(entity => !entity.work_done
                 )
                 state.entities = [...filteredPayload];
@@ -62,7 +59,6 @@ const contractorSlice = createSlice({
                 const filteredPayload = action.payload.filter(entity => !entity.work_done
                     )
                     state.entities = [...filteredPayload];
-                console.log('Assigned', filteredPayload)
             })
     }
 });

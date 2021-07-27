@@ -8,7 +8,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {WorkOrders} from './Components/contractors/WorkOrders';
 import {WorkOrdersAssigned} from './Components/contractors/WorkOrdersAssigned'
-
+import Order from './Components/order/Order'
 
 
 function App() {
@@ -37,6 +37,9 @@ function App() {
             <Route path='/about'>
               <About />
             </Route>
+            <Route path='/order/:id'>
+              <Order />
+            </Route>
           </Switch>
           <NavbarFooter />
         </BrowserRouter>
@@ -59,6 +62,9 @@ function App() {
             <Route path='/orders'>
               <WorkOrders />
             </Route>
+            <Route path='/order/:id'>
+              <Order />
+            </Route>
           </Switch>
           <NavbarFooter userRole={userRole} setUserRole={setUserRole}/>
         </BrowserRouter>
@@ -79,6 +85,9 @@ function App() {
             </Route>
             <Route path='/about'>
               <About />
+            </Route>
+            <Route path='/order/:id'>
+              <Order />
             </Route>
           </Switch>
           <NavbarFooter userRole={userRole} setUserRole={setUserRole}/>

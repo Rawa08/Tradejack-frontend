@@ -19,19 +19,25 @@ border: #343a40 1px  solid;
     outline: none;
 }
 
-
-
-
 .card-title {
     margin-bottom: 20px;
 }
-
 
 .order-title, .order-description, .adress-title, .order-street, .order-city {
     text-transform: capitalize;
 }
 
 /* .order-postal {} */
+
+.order-card{
+    box-shadow: 1px 5px 29px -2px rgba(0,0,0,0.36);
+    border-radius: 10px;
+
+  margin: 0.5rem;
+}
+.order-card__text{
+    padding: 1rem;
+}
 
 .order-card input[type=button], .search-button{
     margin:5px;
@@ -41,11 +47,18 @@ border: #343a40 1px  solid;
     color: white;
     background-color: #343a40;
     }
+.order-card--offer{
+    padding-bottom: 0.5rem;
+}
+
+.myoffer_field{
+    margin: 0.5rem;
+}
+
 .myoffer_field >p{
     border: #343a40 solid 1px;
 }
 .myoffer_field > h5{
-    margin-bottom: 0;
     text-decoration: underline;
 }
 
@@ -70,7 +83,7 @@ border: #343a40 1px  solid;
     }
 
     .order-card input[type=button], .search-button{
-        width: 100%;
+        width: 98%;
 
         }
 }
