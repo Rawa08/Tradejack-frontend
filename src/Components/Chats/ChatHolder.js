@@ -45,7 +45,6 @@ const ChatHolder = ({username}) => {
 
   return (
     <div className='page'>
-              <h3>Chats</h3>
       <div className='sidebar'>
 
         {chats && chats.map(chat => (

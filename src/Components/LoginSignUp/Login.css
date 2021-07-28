@@ -1,4 +1,5 @@
 /* The switch - the box around the slider */
+
 .switch {
   position: relative;
   display: inline-block;
@@ -7,6 +8,7 @@
 }
 
 /* Hide default HTML checkbox */
+
 .switch input {
   opacity: 0;
   width: 0;
@@ -14,6 +16,7 @@
 }
 
 /* The slider */
+
 .slider {
   position: absolute;
   cursor: pointer;
@@ -38,21 +41,22 @@
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #2196F3;
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(13px);
 }
 
 /* Rounded sliders */
+
 .slider.round {
   border-radius: 34px;
 }
@@ -61,34 +65,39 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.formthing{
-  display:flex;
-  justify-content: center;
-  margin-top: 8rem;
-  /* background: url(https://t4.ftcdn.net/jpg/01/78/14/57/360_F_178145745_oDRli4ickV2rfj7gJxN1rWd6wfN3OJy2.jpg);
+.formthing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(https://images.unsplash.com/photo-1518709414768-a88981a4515d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1268&q=80);
   background-position: center;
-  background-size: cover; */
-  height: 100%;
+  background-size: cover;
+  height: 92vh;
+  padding-top: 8rem;
 }
 
-.form__login{
-  display:flex;
+.form__login {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  margin:1rem;
-  box-shadow: 6px 3px 17px -5px rgba(0,0,0,0.24);
+  box-shadow: 6px 3px 17px -5px rgba(0, 0, 0, 0.24);
   padding: 1rem;
   border-radius: 10px;
-  margin-top: 4rem;
   background-color: rgba(255, 255, 255, 0.806);
+  height: 40vh;
+  width: 70vw;
 }
 
-.loginForm{
-  display:flex;
+.loginForm {
+  display: flex;
   flex-direction: column;
 }
 
-.ninja-button{
+.login__icon {
+  margin-top:10px;
+}
+
+.ninja-button {
   padding: 0.5rem;
   border-radius: 20px;
   max-width: 80px;
@@ -97,11 +106,12 @@ input:checked + .slider:before {
   align-self: flex-end;
 }
 
-.input-field{
-  margin-bottom: 0.1;
+.input-field {
+  margin-bottom: 0.1rem;
   border-radius: 10px;
 }
-.ninja-button:hover{
+
+.ninja-button:hover {
   background-color: rgb(212, 209, 209);
   cursor: pointer
 }
@@ -110,16 +120,15 @@ input:checked + .slider:before {
   margin: 1rem;
   outline: none;
   border: none;
-  background:transparent;
+  background: transparent;
 }
 
-.toggle-size{
+.toggle-size {
   max-width: 10px;
 }
 
-.rating-message{
+.rating-message {
   margin: 10px auto;
-
   background-color: #dc3545;
   font-size: .75em;
   font-weight: 700;
@@ -130,7 +139,7 @@ input:checked + .slider:before {
   border-radius: 5px;
 }
 
-.top-holder{
+.top-holder {
   display: flex;
   flex-direction: row;
   justify-items: space-between;

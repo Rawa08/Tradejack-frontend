@@ -8,6 +8,10 @@
   flex-direction: row;
   width:100vw;
   overflow: scroll;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid grey;
 }
 
 .messages{
@@ -27,7 +31,7 @@
   font-size:0.75rem;
 }
 .message__tab p {
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 
 

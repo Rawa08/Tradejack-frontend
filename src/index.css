@@ -4,14 +4,13 @@
 }
 
 body {
-  margin: 5;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-bottom: 5rem;
   background-color: rgba(243, 243, 243, 0.498);
+  padding-bottom:60px
 }
 
 code {

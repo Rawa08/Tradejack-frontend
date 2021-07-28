@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import PersonIcon from '@material-ui/icons/Person';
+import './Login.css';
 
 
 export const LoginForm = ({roleState, setUserRole}) => {
@@ -49,12 +50,12 @@ export const LoginForm = ({roleState, setUserRole}) => {
   return(
       <form onSubmit={handleSubmit} className="loginForm">
         {error && <h3>{error}</h3>}
-        <label htmlFor="usernameInput"><PersonIcon color="disabled" />
+        <label htmlFor="usernameInput"><PersonIcon className='login__icon' color="disabled" />
           <input type="text" name="usernameInput" value={usernameSt}
           className='input-field'
           onChange={e=> setUsername(e.target.value)} required placeholder="Username"/>
         </label>
-        <label htmlFor="passwordInput"><VpnKeyIcon color="disabled"/>
+        <label htmlFor="passwordInput"><VpnKeyIcon className='login__icon' color="disabled"/>
           <input type="password" name="passwordInput" value={passwordSt}
           className='input-field'
           onChange={e=> setPassword(e.target.value)} required placeholder="Password"/>

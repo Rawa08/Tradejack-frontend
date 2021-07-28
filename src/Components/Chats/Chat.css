@@ -1,7 +1,7 @@
 .my-message{
   display:flex;
   flex-direction: column;
-  margin: 0.25rem 20px;
+  margin: 0.25rem 5px;
   margin-left:auto;
   right:0;
   background-color: rgb(41, 134, 249);
@@ -10,15 +10,10 @@
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
 }
-
+.other-message p,
 .my-message p {
   margin-left: 10px;
 }
-
-.message__info{
-
-}
-
 
 .message__content{
   text-align: left;
@@ -26,12 +21,16 @@
 }
 
 .other-message{
-    margin: 0.25rem 20px;
-    margin-right:auto;
-    left:0;
-    background-color: grey;
-    width: 60vw;
-    border-radius: 5px;
+  display:flex;
+  flex-direction: column;
+  margin: 0.25rem 5px;
+  margin-right:auto;
+  left:0;
+  background-color: rgb(164, 163, 163);
+  width: 60vw;
+  border-radius: 10px;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 
 .message__info{
