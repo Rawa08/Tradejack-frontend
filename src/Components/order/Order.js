@@ -25,7 +25,7 @@ const Order = () => {
     date.setHours(date.getHours() + 2);
     dateStamp.setHours(dateStamp.getHours() + 2);
     const tsDay = dateStamp.getDate().toString().length === 1 ? `0${dateStamp.getDate()}` : dateStamp.getDate()
-    const tsMonth = dateStamp.getMonth().toString().length === 1 ? `0${dateStamp.getMonth()}` : dateStamp.getMonth()
+    const tsMonth = dateStamp.getMonth().toString().length === 1 ? `0${dateStamp.getMonth()+1}` : dateStamp.getMonth()+1
     const tsHours = dateStamp.getHours().toString().length === 1 ? `0${dateStamp.getHours()}` : dateStamp.getHours()
     const tsMinutes = dateStamp.getMinutes().toString().length === 1 ? `0${dateStamp.getMinutes()}` : dateStamp.getMinutes()
     const shownDate = `${tsHours}:${tsMinutes} - ${tsDay}/${tsMonth}`
@@ -53,7 +53,9 @@ const Order = () => {
   }
     return (
       <>
+<div className="singel-card">
         <div className='order-card-big' style={redRawa}>
+
            <Gallery imageLinkArray={imgLink} />
             {/* {imgLink.map(image => <img style={image_style} key={image} src={image} alt="look here, it's a naked crocodile" />)} */}
                 <div className='worder-card__text--date'>Registered: {shownDate}</div>
@@ -64,9 +66,9 @@ const Order = () => {
                 <p>{street}</p>
                 <p>{postalCode}</p>
                 <p>{city}</p>
-                <button onClick={onDone}>Order Done</button>
+                {role === 'client' && <button onClick={onDone}>Order Done</button>}
             </div>
-        </div>
+        </div></div>
         {role === 'client' && <div>
               {workoffers && workoffers.map(offer => (
                   <WorkOfferCard key={offer.id} offer={offer} client={author_id} title={title} />

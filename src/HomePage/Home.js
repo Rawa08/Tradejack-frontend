@@ -24,6 +24,7 @@ export const Home = () => {
 
   return (
     <div className='container__home'>
+
       <div className='container__homepic'>
         <img src='https://digitaltrades.com.au/wp-content/uploads/2019/11/Handyman-Services.jpg' alt='handyman' />
       </div>

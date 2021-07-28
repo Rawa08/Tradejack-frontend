@@ -1,78 +1,111 @@
-.search-form{
-    display:flex;
+.search-form {
+    display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     margin-top: 10px
 }
 
-.search-label, .search-input, .form-select{
+.search-label, .search-input, .form-select {
     width: 80%;
-margin:5px;
-outline: none;
+    margin: 5px;
+    outline: none;
 }
 
-.search-input{
-border: #343a40 1px  solid;
+.search-input {
+    border: #343a40 1px solid;
     border-radius: 5px;
-    padding:2px;
+    padding: 2px;
     outline: none;
+}
+
+.order-list {
+    display: flex;
+    flex-flow: wrap row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.order-card {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    box-shadow: 1px 5px 29px -2px rgba(0, 0, 0, 0.36);
+    border-radius: 10px;
+    text-align: left;
+    margin-top: 10px;
+    width: 90%;
+    height: 600px;
+    color: black;
+    overflow: hidden;
 }
 
 .card-title {
     margin-bottom: 20px;
 }
 
-.order-title, .order-description, .adress-title, .order-street, .order-city {
-    text-transform: capitalize;
+.card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.order-title, .order-description, .adress-title, .order-street, .order-city, .order-postal {
+    padding: 0 0.5rem 0;
+    color: black;
+}
+
+.order-description {
+    padding: 0 0.5rem 0;
 }
 
 /* .order-postal {} */
 
-.order-card{
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  box-shadow: 1px 5px 29px -2px rgba(0,0,0,0.36);
-  border-radius: 10px;
-  text-align: left;
-  margin: 0.5rem;
-  max-width: 500px;
-  min-height: 600px;
-}
-
-.order-card__text{
+.order-card__text {
     padding: 1rem;
 }
 
-.order-card__text > h3 {
-  text-decoration: underline;
+.order-card__text>h3 {
+    text-decoration: underline;
 }
 
-.order-card__text > h4 {
-  text-decoration: underline;
+.order-card__text>h4 {
+    text-decoration: underline;
 }
 
-.order-card input[type=button], .search-button{
-    margin:5px;
+.order-card input[type=button], .search-button {
+    align-self: center;
+    margin: 15px;
     padding: 2px;
     border-radius: 5px;
     border: #343a40;
     color: white;
     background-color: #343a40;
-    }
-.order-card--offer{
-    padding-bottom: 0.5rem;
+    width: 80%;
 }
 
-.myoffer_field{
+.order-card--offer {
+    padding-bottom: 0.5rem;
+    max-width: 500px;
+    min-height: 600px;
+    width: 100%;
+}
+
+.order-card--offer>img {
+    min-width: 400px;
+}
+
+.myoffer_field {
     margin: 0.5rem;
 }
 
-.myoffer_field >p{
+.myoffer_field>p {
     border: #343a40 solid 1px;
 }
-.myoffer_field > h5{
+
+.myoffer_field>h5 {
     text-decoration: underline;
 }
 
@@ -84,21 +117,36 @@ border: #343a40 1px  solid;
     margin-bottom: 0px;
 }
 
-.client-data{
+.client-data {
     display: grid;
     grid-template-columns: 70% 30%;
+    padding: 0.5rem;
 }
 
+/* .orders-offer-button{
+    cursor: pointer;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
 
-@media (max-width: 680px) {
+
+    background-color: #343A40;
+    font-weight: 600;
+    color: white;
+    border-radius: 5px;
+} */
+
+@media (max-width: 428px) {
     .order-card {
         width: 100%;
         margin-top: 40px;
         margin-bottom: 60px;
     }
-
-    .order-card input[type=button], .search-button{
-      max-width: 480px;
-
-        }
+    .order-card input[type=button], .search-button {
+        max-width: 480px;
+    }
+    .card-image {
+        width: 100%;
+        height: 100%;
+    }
 }

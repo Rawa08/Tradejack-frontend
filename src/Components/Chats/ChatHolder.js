@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import {v4 as uuid} from 'uuid';
 import { useLocation } from 'react-router-dom'
 import io from "socket.io-client";
 import Chat from './Chat'
@@ -16,12 +17,12 @@ const ChatHolder = ({username}) => {
   useEffect(() => {
     socketRef.current = io.connect('http://localhost:3000');
     socketRef.current.emit('fetchChats', username);
-    return () => socketRef.current.disconnect();
+    return () => {socketRef.current.disconnect()
+    socketRef.current.removeAllListeners()};
   }, [socketRef, username]);
 
   useEffect(() => {
     socketRef.current.on('sendChatList', info => {
-      console.log(info);
       setChats(info);
     });
     return () => socketRef.current.removeAllListeners()
@@ -33,26 +34,26 @@ const ChatHolder = ({username}) => {
         return loadedRef.current = true;
       }
       const receiver = query.get('rec');
-      console.log(receiver);
       const title = query.get('ti');
-      const host = `${username}${receiver}`;
-      console.log(host);
+      const host = uuid();
       const chatData = { username, receiver, room:host, title }
       loadedRef.current = true;
       socketRef.current.emit('join', chatData);
-      console.log('firing');
       return socketRef.current.emit('fetchChats', username);
     }
   }, [query, room, username]);
 
   return (
     <div className='page'>
+              <h3>Chats</h3>
       <div className='sidebar'>
-        <h3>Chats</h3>
+
         {chats && chats.map(chat => (
-          <div key={chat.room} onClick={() => {setRoom(chat.room)}}>
+          <div key={chat.room} onClick={() => setRoom(chat.room)} className='message__tab'>
+            <p style={{margin:0}}>Work Order:</p>
             <h4>{chat.title}</h4>
-            <p>{chat.receiver}</p>
+            <p style ={{margin:0}}>Contractor:</p>
+            <p style={{fontsize:'0.5rem'}}>{chat.receiver}</p>
           </div>
         ))}
       </div>

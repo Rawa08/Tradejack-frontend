@@ -17,7 +17,7 @@ export const ContractorOrderCardOffer = ({ order }) => {
             <Gallery imageLinkArray={imgLink} />
             <h3 className="order-title">{title}</h3>
             <p className="order-description">{description}</p>
-            <h4>Client:</h4>
+            <h4 className="order-title">Client:</h4>
             <div className='client-data'>
                 <div>
                 <h5 className='client-name'>Name</h5>

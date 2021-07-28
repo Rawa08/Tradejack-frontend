@@ -1,4 +1,21 @@
-.workOrder{
-  display:flex;
+.workOrder {
+  display: flex;
   flex-direction: column;
+
+}
+
+.create-order__upload {
+  margin: 5px;
+}
+
+.create-order__submit {
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  width: 500px;
+  margin-top: 15px;
+  background-color: #343A40;
+  font-weight: 600;
+  color: white;
+  border-radius: 5px;
 }

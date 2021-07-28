@@ -1,23 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import './Chat.css';
 
 const Chat = ({ username, room, socketRef }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [error, setError] = useState('');
+  const messagesEndRef = useRef(null);
 
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+  }
+
+
+  console.log(room);
   useEffect(() => {
     const socketNow = socketRef.current;
     if (room !== '') {
-      setMessages([]);
       socketNow.emit('fetchOld', room);
-      socketNow.emit('join', room);
+      socketNow.emit('joinExisting', room);
     }
   }, [room, socketRef])
+
+
 
   useEffect(() => {
     if (room !== '') {
       socketRef.current.on("message", msg => {
-        console.log('hi');
         setMessages(prevState => [...prevState, msg])
       })
       return () => socketRef.current.removeAllListeners();
@@ -27,7 +35,6 @@ const Chat = ({ username, room, socketRef }) => {
   useEffect(() => {
     if (room !== '') {
       socketRef.current.on('bulkMessages', msgs => {
-        console.log(msgs);
         setMessages([...msgs]);
       })
     }
@@ -49,21 +56,40 @@ const Chat = ({ username, room, socketRef }) => {
     }, 2000)
   }
 
+  useEffect(scrollToBottom, [messages]);
+
   return (
     <div>
-      <h3>Chat</h3>
       <div className='messages'>
         {error && <h3>{error}</h3>}
-        {messages && messages.map((message, i) => (
-          <div key={i}>
-            <p>{message.sender}:</p>
-            <p>{message.message}</p>
-            <p>{message.tStamp}</p>
-          </div>
-        ))}
+        {messages && messages.map((message, i) => {
+          if (message.sender === username) {
+            return (
+              <div key={i} className='my-message' >
+                <div className='message_info'>
+                  <p className='message__author'>{message.sender}:</p>
+                  <p className='message__ts'>{message.tStamp}</p>
+                </div>
+                <p className='message__content'>{message.message}</p>
+
+              </div>
+            )
+          }
+          return (
+            <div key={i} className='other-message' >
+               <div className='message_info'>
+                  <p className='message__author'>{message.sender}:</p>
+                  <p className='message__ts'>{message.tStamp}</p>
+                </div>
+                <p className='message__content'>{message.message}</p>
+            </div>
+          )
+
+        })}
+        <div ref={messagesEndRef} />
       </div>
       <form onSubmit={messageSubmit}>
-        <input type="text" name="" value={message} onChange={e => setMessage(e.target.value)} />
+        <textarea className='chat__input' type="text" name="" value={message} onChange={e => setMessage(e.target.value)} />
         <input type="submit" value="Send" />
       </form>
     </div>

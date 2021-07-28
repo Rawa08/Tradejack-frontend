@@ -33,7 +33,7 @@ export const WorkorderList = () => {
                 onClick={togglePopup}
                 className='newOrder'
             />
-        <div className="order-list">
+        <div className="order-list__client">
             {isOpen && <Popup content={<CreateOrder newOrderBoolean={newOrderBoolean} setNewOrderBoolean={setNewOrderBoolean}
              setIsOpen={setIsOpen}/>} togglePopup={togglePopup}/> }
             {orders.entities.map(order => (

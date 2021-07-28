@@ -1,0 +1,55 @@
+.my-message{
+  display:flex;
+  flex-direction: column;
+  margin: 0.25rem 20px;
+  margin-left:auto;
+  right:0;
+  background-color: rgb(41, 134, 249);
+  width: 60vw;
+  border-radius: 10px;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+
+.my-message p {
+  margin-left: 10px;
+}
+
+.message__info{
+
+}
+
+
+.message__content{
+  text-align: left;
+  align-self: start;
+}
+
+.other-message{
+    margin: 0.25rem 20px;
+    margin-right:auto;
+    left:0;
+    background-color: grey;
+    width: 60vw;
+    border-radius: 5px;
+}
+
+.message__info{
+  display: flex;
+  flex-direction: row;
+}
+.message__author,
+.message__content,
+.message__ts {
+  color:white;
+  margin:auto;
+}
+
+.message__ts{
+ font-size: 0.7rem;
+}
+
+.chat__input{
+  resize: vertical;
+  width: 80vw;
+}

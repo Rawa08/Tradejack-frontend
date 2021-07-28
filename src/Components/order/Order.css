@@ -1,7 +1,17 @@
+.singel-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
 .order-card-big{
-  margin: 0.2rem;
+  width: 90%;
+  margin: 40px auto;
   box-shadow: 1px 5px 29px -2px rgba(0,0,0,0.36);
   border-radius: 10px;
+
 }
 
 .order-card-big__text{
@@ -10,7 +20,7 @@
 
 .order-card-big__offer-holder{
   display: grid;
-  grid-template-columns: 45% 55%;
+  grid-template-columns: 40% 60%;
   box-shadow: 1px 5px 29px -2px rgba(0,0,0,0.36);
   margin: 1rem;
 }
@@ -31,8 +41,8 @@
 }
 
 .order-card-big__offer-holder img {
-  max-height: 150px;
-  max-width: 150px;
+  max-height: 120px;
+  max-width: 120px;
 }
 
 .order-card-big__offer-holder--details{
@@ -53,6 +63,13 @@
   padding: 0;
 }
 
+.order-card-big__text > button{
+  margin: 1rem;
+  width: 94%;
+  background-color: rgb(43, 42, 42);
+  color: white;
+}
+
 @media only screen and (min-width: 390px)  {
   .order-card-big__offer-holder h5{
     font-size: 0.8rem;
@@ -70,8 +87,8 @@
   }
 
   .order-card-big__offer-holder img {
-    max-height: 220px;
-    max-width: 220px;
+    max-height: 160px;
+    max-width: 160px;
   }
 
   .order-card-big__offer-holder--details{

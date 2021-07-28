@@ -44,6 +44,7 @@ export const OrderCard = ({ order }) => {
 
     return (
         <div className='worder-card' style={redRawa}>
+
            <Gallery imageLinkArray={imgLink} />
             {/* {imgLink.map(image => <img style={image_style} key={image} src={image} alt="look here, it's a naked crocodile" />)} */}
             <div className='worder-card__text'>

@@ -12,12 +12,14 @@ const ContractorCard = ({contractor}) => {
   } = contractor;
   const mailto = `mailto: ${email}`
   const dateStamp = new Date(last_login)
+  console.log(dateStamp.getMonth())
   dateStamp.setHours(dateStamp.getHours() + 2);
   const tsDay = dateStamp.getDate().toString().length === 1 ? `0${dateStamp.getDate()}` : dateStamp.getDate()
-  const tsMonth = dateStamp.getMonth().toString().length === 1 ? `0${dateStamp.getMonth()}` : dateStamp.getMonth()
+  const tsMonth = dateStamp.getMonth().toString().length === 1 ? `0${dateStamp.getMonth()+1}` : dateStamp.getMonth()+1
   const tsHours = dateStamp.getHours().toString().length === 1 ? `0${dateStamp.getHours()}` : dateStamp.getHours()
   const tsMinutes = dateStamp.getMinutes().toString().length === 1 ? `0${dateStamp.getMinutes()}` : dateStamp.getMinutes()
   const shownDate = `${tsHours}:${tsMinutes} - ${tsDay}/${tsMonth}`
+
 
   return (
     <div className='contractor-home-card'>

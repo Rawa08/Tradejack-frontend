@@ -5,6 +5,7 @@ import Popup from '../Popup/Popup';
 import './ContractorOrderCard.css';
 import axios from 'axios';
 import '../LoginSignUp/Login.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -47,16 +48,18 @@ export const ContractorOrderCard = ({ order }) => {
         <div className="order-card">
 
             {/* {imgLink.map((image, i) => <img style={image_style} key={`${image}+${i}`} src={image} alt="look here, it's a naked crocodile" />)} */}
-            <Gallery imageLinkArray={imgLink} />
+            <img src={imgLink} className="card-image"/>
+            <Link to={`/order/${id}`} style={{ textDecoration: 'none' }}>
             <div className="order-card__text">
 
-                <h3 className="order-title">Title: {title}</h3>
+                <h3 className="order-title">{title}</h3>
                 <p className="order-description">{description}</p>
                 <h4 className="adress-title">Address:</h4>
                 <p className="order-street">{street}</p>
                 <p className="order-postal">{postalCode}</p>
                 <p className="order-city">{city}</p>
             </div>
+            </Link>
             <div className='offer-pop'>
                 {isOpen && <Popup content={<CreateOffers id={id} togglePopup={togglePopup} saveOffer={saveOffertoDB} />} togglePopup={togglePopup} />}
             { createMessage.length > 0 && <p className="rating-message">{createMessage}</p> }
@@ -65,7 +68,7 @@ export const ContractorOrderCard = ({ order }) => {
                 type="button"
                 value="Offer your services"
                 onClick={togglePopup}
-                className='newOrder'
+                className='orders-offer-button'
             />
         </div>
 

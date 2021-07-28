@@ -20,7 +20,7 @@ export const WorkOfferCard = ({ offer, client, title }) => {
   const dateStamp = new Date(ts)
   dateStamp.setHours(dateStamp.getHours() + 2);
   const tsDay = dateStamp.getDate().toString().length === 1 ? `0${dateStamp.getDate()}` : dateStamp.getDate()
-  const tsMonth = dateStamp.getMonth().toString().length === 1 ? `0${dateStamp.getMonth()}` : dateStamp.getMonth()
+  const tsMonth = dateStamp.getMonth().toString().length === 1 ? `0${dateStamp.getMonth()+1}` : dateStamp.getMonth()+1
   const tsHours = dateStamp.getHours().toString().length === 1 ? `0${dateStamp.getHours()}` : dateStamp.getHours()
   const tsMinutes = dateStamp.getMinutes().toString().length === 1 ? `0${dateStamp.getMinutes()}` : dateStamp.getMinutes()
   const shownDate = `${tsHours}:${tsMinutes} - ${tsDay}/${tsMonth}`
@@ -38,7 +38,6 @@ export const WorkOfferCard = ({ offer, client, title }) => {
 
 
   const setRatingValue = (value) => {
-    console.log(contractor_id)
     setRating(value);
     const body = {
       contractor_id: contractor_id,
@@ -77,9 +76,10 @@ export const WorkOfferCard = ({ offer, client, title }) => {
       <div className='order-card-big__offer-holder'>
         <div>
           <img src={profile_image} alt='profile' />
+          <StarPicker onChange={setRatingValue} value={rating} size={31} />
         </div>
         <div>
-          {chosen ? <small>True</small> : <small>False</small>}
+
           <div className='order-card-big__offer-holder--details'>
             <div className='top-holder'>
               <div>
@@ -102,11 +102,10 @@ export const WorkOfferCard = ({ offer, client, title }) => {
               {role === 'client' ? <label className="switch">
                 {chosen ? <input type="checkbox" onChange={toggleChosen} className='' checked={chosenState} />: <input type="checkbox" onChange={toggleChosen} className='' /> }
                 <span className="slider round"></span>
-              </label> : { chosenState } && <p>Your offer has been accepted</p>}
-              <StarPicker onChange={setRatingValue} value={rating} size={20} />
+            </label> : { chosenState } && <p>Your offer has been accepted</p>}
             </div>
-          </div>
           <p className='order-card-big__offer-holder--time'><small>Offered: {shownDate}</small></p>
+          </div>
         </div>
       </div>
     </>

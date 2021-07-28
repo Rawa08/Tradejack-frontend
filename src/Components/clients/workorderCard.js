@@ -16,7 +16,7 @@ export const WorkOrderCard = ({ order }) => {
     date.setHours(date.getHours() + 2);
     dateStamp.setHours(dateStamp.getHours() + 2);
     const tsDay = dateStamp.getDate().toString().length === 1 ? `0${dateStamp.getDate()}` : dateStamp.getDate()
-    const tsMonth = dateStamp.getMonth().toString().length === 1 ? `0${dateStamp.getMonth()}` : dateStamp.getMonth()
+    const tsMonth = dateStamp.getMonth().toString().length === 1 ? `0${dateStamp.getMonth()+1}` : dateStamp.getMonth()+1
     const tsHours = dateStamp.getHours().toString().length === 1 ? `0${dateStamp.getHours()}` : dateStamp.getHours()
     const tsMinutes = dateStamp.getMinutes().toString().length === 1 ? `0${dateStamp.getMinutes()}` : dateStamp.getMinutes()
     const shownDate = `${tsHours}:${tsMinutes} - ${tsDay}/${tsMonth}`
@@ -36,7 +36,7 @@ export const WorkOrderCard = ({ order }) => {
             <div className='worder-card' style={redRawa}>
             <Link to={`/order/${id}`} style={{ textDecoration: 'none' }}>
             <Gallery imageLinkArray={imgLink} />
-                {/* {imgLink.map(image => <img style={image_style} key={image} src={image} alt="look here, it's a naked crocodile" />)} */}
+
                 <div className='worder-card__text'>
                     <div className='worder-card__text--date'>Registered: {shownDate}</div>
                     <h3>{title}</h3>
@@ -48,7 +48,7 @@ export const WorkOrderCard = ({ order }) => {
 
                 </div>
                 </Link>
-                <button onClick={onDone}>Order Done</button>
+                <button className="orderDone-button" onClick={onDone}>Order Done</button>
             </div>
 
         </>

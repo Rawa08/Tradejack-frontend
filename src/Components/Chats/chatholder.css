@@ -1,8 +1,33 @@
 .page{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .sidebar {
-  margin-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  width:100vw;
+  overflow: scroll;
 }
+
+.messages{
+  align-self: center;
+  height:65vh;
+  overflow: scroll;
+}
+
+.message__tab{
+  margin:0rem 0.25rem;
+  background-color: lightgray;
+  padding:0.5rem;
+  border-radius: 10px;
+}
+
+.message__tab h4{
+  font-size:0.75rem;
+}
+.message__tab p {
+  font-size: 0.5rem;
+}
+
+

@@ -102,16 +102,9 @@ const CreateOrder = ({setNewOrderBoolean, newOrderBoolean, setIsOpen}) => {
           minDate={new Date(date)}
           openToDate={new Date(date)}/>
         <label >Images:</label>
-        <input name="image_link"
-          onChange={handleImage}
-          type='file'
-          multiple={true}
-          accept=".png, .jpg, .jpeg"
-          required
-        ></input>
-        <input
-          type='submit'
-        ></input>
+        <input className='create-order__upload' name="image_link" onChange={handleImage}
+        type='file' multiple={true} accept=".png, .jpg, .jpeg" required ></input>
+        <input type='submit' className='create-order__submit'></input>
       </form>
     </div>
   )

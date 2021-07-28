@@ -10,11 +10,16 @@ import {WorkOrders} from './Components/contractors/WorkOrders';
 import {WorkOrdersAssigned} from './Components/contractors/WorkOrdersAssigned'
 import Order from './Components/order/Order'
 import ChatHolder from './Components/Chats/ChatHolder';
+import {ContactUs} from './Components/ContactUs';
 
 
 function App() {
   const [userRole, setUserRole] = useState('');
   const [username, setUsername] = useState('');
+  const bgStyle = {
+    // backgroundImage: `url(https://t4.ftcdn.net/jpg/01/78/14/57/360_F_178145745_oDRli4ickV2rfj7gJxN1rWd6wfN3OJy2.jpg)`,
+    backgroundColor: 'red'
+  }
   useEffect(()=> {
     const role = localStorage.getItem('role');
     setUserRole(role);
@@ -26,6 +31,7 @@ function App() {
   if (!userRole) {
     return (
       <div className="App">
+
         <BrowserRouter>
           <Navbar userRole={userRole}/>
           <Switch>
@@ -33,10 +39,13 @@ function App() {
               <Home />
             </Route>
             <Route path='/login'>
-              <Login setUserRole={setUserRole} />
+              <Login setUserRole={setUserRole} style={bgStyle}/>
             </Route>
             <Route path='/join'>
               <Signup />
+            </Route>
+            <Route path='/contact'>
+              <ContactUs />
             </Route>
             <Route path='/about'>
               <About />

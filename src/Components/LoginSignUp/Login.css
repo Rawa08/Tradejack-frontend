@@ -64,6 +64,11 @@ input:checked + .slider:before {
 .formthing{
   display:flex;
   justify-content: center;
+  margin-top: 8rem;
+  /* background: url(https://t4.ftcdn.net/jpg/01/78/14/57/360_F_178145745_oDRli4ickV2rfj7gJxN1rWd6wfN3OJy2.jpg);
+  background-position: center;
+  background-size: cover; */
+  height: 100%;
 }
 
 .form__login{
@@ -74,7 +79,8 @@ input:checked + .slider:before {
   box-shadow: 6px 3px 17px -5px rgba(0,0,0,0.24);
   padding: 1rem;
   border-radius: 10px;
-  margin-top: 10rem;
+  margin-top: 4rem;
+  background-color: rgba(255, 255, 255, 0.806);
 }
 
 .loginForm{
