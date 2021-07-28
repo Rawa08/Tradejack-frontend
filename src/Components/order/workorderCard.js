@@ -55,7 +55,7 @@ export const WorkOrderCard = ({ order }) => {
                 <button onClick={onDone}>Order Done</button>
                 <div className='Offer-holder'>
                     {order.workOffers && order.workOffers.map(offer => (
-                        <WorkOfferCard key={offer.id} offer={offer} client={author_id} />
+                        <WorkOfferCard key={offer.id} offer={offer} client={author_id} title={title} />
                     ))}
                 </div>
             </div>

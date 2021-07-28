@@ -1,14 +1,12 @@
-import { useEffect,useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { changeDoneStatus, fetchWorkOffers } from '../../Slice/workorder-slice'
-import { WorkOfferCard } from './WorkOfferCard';
+import { changeDoneStatus } from '../../Slice/workorder-slice'
 import {Gallery} from '../Gallery';
 import { Link } from 'react-router-dom';
 
 
 export const WorkOrderCard = ({ order }) => {
     const dispatch = useDispatch();
-    const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink, start_date: startDate, work_done: workDone, ts, author_id }
+    const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink, start_date: startDate, work_done: workDone, ts}
         = order;
 
     // const descLength = description.length;
@@ -25,14 +23,9 @@ export const WorkOrderCard = ({ order }) => {
     // const role = localStorage.getItem('role');
     const redRawa = {
         textDecoration: workDone ? "line-through" : "none",
-        backgroundColor: workDone ? "red" : "transparent"
+        backgroundColor: workDone ? "lightgrey" : "transparent",
+        color: workDone ? "lightgrey" : "transparent"
     }
-    const [here, setHere] = useState(false)
-
-    useEffect(() => {
-        setHere(!here)
-    },[])
-
 
     const onDone = () => {
         dispatch(changeDoneStatus(id))

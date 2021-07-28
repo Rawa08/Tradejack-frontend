@@ -1,10 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { fetchOneWorkOrder, changeDoneStatus } from '../../Slice/bigorder-slice';
-import {ContractorOrderCard} from '../contractors/ContractorOrderCard';
-import {WorkOrderCard} from '../clients/workorderCard';
 import { WorkOfferCard } from './WorkOfferCard';
 import {Gallery} from '../Gallery';
 import './Order.css'
@@ -33,13 +31,14 @@ const Order = () => {
     const shownDate = `${tsHours}:${tsMinutes} - ${tsDay}/${tsMonth}`
     // const role = localStorage.getItem('role');
     const redRawa = {
-        textDecoration: workDone ? "line-through" : "none",
-        backgroundColor: workDone ? "red" : "transparent",
-    }
+      textDecoration: workDone ? "line-through" : "none",
+      backgroundColor: workDone ? "lightgrey" : "transparent",
+      color: workDone ? "grey" : "black"
+  }
 
     useEffect(() => {
       dispatch(fetchOneWorkOrder(order_id))
-    }, [dispatch])
+    }, [dispatch, order_id])
 
     const onDone = () => {
         dispatch(changeDoneStatus(id))
@@ -52,7 +51,6 @@ const Order = () => {
       </div>
     )
   }
-
     return (
       <>
         <div className='order-card-big' style={redRawa}>
@@ -71,7 +69,7 @@ const Order = () => {
         </div>
         {role === 'client' && <div>
               {workoffers && workoffers.map(offer => (
-                  <WorkOfferCard key={offer.id} offer={offer} client={author_id} />
+                  <WorkOfferCard key={offer.id} offer={offer} client={author_id} title={title} />
               ))}
         </div>}
 

@@ -24,8 +24,10 @@ export const OrderCard = ({ order }) => {
     // const role = localStorage.getItem('role');
     const redRawa = {
         textDecoration: workDone ? "line-through" : "none",
-        backgroundColor: workDone ? "red" : "transparent"
+        backgroundColor: workDone ? "lightgrey" : "transparent",
+        color: workDone ? "lightgrey" : "transparent"
     }
+
     const [here, setHere] = useState(false)
 
     useEffect(() => {
@@ -55,7 +57,7 @@ export const OrderCard = ({ order }) => {
                 <button onClick={onDone}>Order Done</button>
                 <div className='Offer-holder'>
                     {order.workOffers && order.workOffers.map(offer => (
-                        <WorkOfferCard key={offer.id} offer={offer} client={author_id} />
+                        <WorkOfferCard key={offer.id} offer={offer} client={author_id}  />
                     ))}
                 </div>
             </div>

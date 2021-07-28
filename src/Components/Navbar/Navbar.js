@@ -12,7 +12,7 @@ export const Navbar = ({userRole, setUserRole}) => {
     history.push('/')
   }
  const isBootActive = true
-console.log(userRole)
+
  if(!isBootActive){
   return (
     <nav className='nav'>

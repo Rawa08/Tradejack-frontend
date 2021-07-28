@@ -9,15 +9,19 @@ import { useState, useEffect } from 'react';
 import {WorkOrders} from './Components/contractors/WorkOrders';
 import {WorkOrdersAssigned} from './Components/contractors/WorkOrdersAssigned'
 import Order from './Components/order/Order'
+import ChatHolder from './Components/Chats/ChatHolder';
 
 
 function App() {
   const [userRole, setUserRole] = useState('');
-
+  const [username, setUsername] = useState('');
   useEffect(()=> {
     const role = localStorage.getItem('role');
     setUserRole(role);
+    const username = localStorage.getItem('username');
+    setUsername(username);
   },[]);
+
 
   if (!userRole) {
     return (
@@ -65,6 +69,9 @@ function App() {
             <Route path='/order/:id'>
               <Order />
             </Route>
+            <Route path='/chats'>
+              <ChatHolder username={username} />
+            </Route>
           </Switch>
           <NavbarFooter userRole={userRole} setUserRole={setUserRole}/>
         </BrowserRouter>
@@ -88,6 +95,9 @@ function App() {
             </Route>
             <Route path='/order/:id'>
               <Order />
+            </Route>
+            <Route path='/chats'>
+              <ChatHolder username={username} />
             </Route>
           </Switch>
           <NavbarFooter userRole={userRole} setUserRole={setUserRole}/>

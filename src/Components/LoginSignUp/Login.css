@@ -111,7 +111,7 @@ input:checked + .slider:before {
 }
 
 .rating-message{
-  margin:auto;
+  margin: 10px auto;
 
   background-color: #dc3545;
   font-size: .75em;
@@ -121,4 +121,10 @@ input:checked + .slider:before {
   text-align: center;
   width: 100%;
   border-radius: 5px;
+}
+
+.top-holder{
+  display: flex;
+  flex-direction: row;
+  justify-items: space-between;
 }

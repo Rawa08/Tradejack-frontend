@@ -7,11 +7,6 @@ export const Gallery = ({imageLinkArray}) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
-        const image_style = {
-        maxWidth: '100px',
-        maxHight: '75px'
-    }
-
     return (
       <div className="gallery">
         <button className="image-gallery-button"  onClick={() => setIsOpen(true)}>

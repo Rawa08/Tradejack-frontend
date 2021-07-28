@@ -1,21 +1,13 @@
-import { useState } from 'react';
-import { CreateOffers } from '../contractors/CreateOffers';
 import { Gallery } from '../Gallery';
-import Popup from '../Popup/Popup';
 import './ContractorOrderCard.css';
 
 export const ContractorOrderCardOffer = ({ order }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink,
+    const { title, description, street, postal_code: postalCode, city, image_link: imgLink,
         start_date: startDate, message_field, forename, lastname, clientmail, clientphone }
         = order;
     const mailto = `mailto: ${clientmail}`
     const date = new Date(startDate)
     date.setHours(date.getHours() + 2);
-
-    const togglePopup = () => {
-        setIsOpen(!isOpen);
-    }
 
     return (
         <div className="order-card order-card--offer">

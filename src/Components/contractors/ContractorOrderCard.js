@@ -3,12 +3,18 @@ import { CreateOffers } from '../contractors/CreateOffers';
 import { Gallery } from '../Gallery';
 import Popup from '../Popup/Popup';
 import './ContractorOrderCard.css';
+import axios from 'axios';
+import '../LoginSignUp/Login.css';
+
+
 
 export const ContractorOrderCard = ({ order }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink,
         start_date: startDate }
         = order;
+
+    const [createMessage, setMessage] = useState('');
 
     const date = new Date(startDate)
     date.setHours(date.getHours() + 2);
@@ -17,12 +23,33 @@ export const ContractorOrderCard = ({ order }) => {
         setIsOpen(!isOpen);
     }
 
+    const saveOffertoDB = async (payload) => {
+        await axios.post('http://localhost:3000/api/work/workoffers', payload, {
+            headers: {
+                'authorization': localStorage.getItem('accessToken')
+            }
+        }).then(res => {
+            if (res.data.length > 0) {
+                setMessage(res.data);
+                setTimeout(() => { setMessage('') }, 3500);
+            } else {
+                if (res.data.length < 1) {
+                    setMessage('Offer have been send!');
+                    setTimeout(() => { setMessage('') }, 3500);
+                }
+            }
+
+        })
+    }
+
     return (
+
         <div className="order-card">
 
             {/* {imgLink.map((image, i) => <img style={image_style} key={`${image}+${i}`} src={image} alt="look here, it's a naked crocodile" />)} */}
             <Gallery imageLinkArray={imgLink} />
             <div className="order-card__text">
+
                 <h3 className="order-title">{title}</h3>
                 <p className="order-description">{description}</p>
                 <h4 className="adress-title">Adress</h4>
@@ -37,9 +64,12 @@ export const ContractorOrderCard = ({ order }) => {
                 className='newOrder'
             />
             <div className='offer-pop'>
-                {isOpen && <Popup content={<CreateOffers id={id} togglePopup={togglePopup} />} togglePopup={togglePopup} />}
+                {isOpen && <Popup content={<CreateOffers id={id} togglePopup={togglePopup} saveOffer={saveOffertoDB} />} togglePopup={togglePopup} />}
             </div>
+            { createMessage.length > 0 && <p className="rating-message">{createMessage}</p> }
         </div>
+
+
     )
 }
 

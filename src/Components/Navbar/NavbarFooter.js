@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import ContactMailIcon from '@material-ui/icons/ContactMail';
 import HomeIcon from '@material-ui/icons/Home';
 import WebAssetIcon from '@material-ui/icons/WebAsset';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
@@ -11,7 +9,6 @@ import InfoIcon from '@material-ui/icons/Info';
 import './NavbarFooter.css'
 
 const NavbarFooter = ({userRole, setUserRole}) => {
-  const role = localStorage.getItem('role');
   const history = useHistory()
 
   const logOut = () => {
@@ -64,7 +61,7 @@ const NavbarFooter = ({userRole, setUserRole}) => {
           </Link>
         </div>
         <div className='footer-container'>
-        <Link to='/contact' className="nav-link nav__link">
+        <Link to='/chats' className="nav-link nav__link">
             <MailOutlineIcon className='footer-icon' fontSize="large"/>
         </Link>
         </div>
@@ -93,7 +90,7 @@ const NavbarFooter = ({userRole, setUserRole}) => {
           </Link>
         </div>
         <div className='footer-container'>
-        <Link to='/contact' className="nav-link nav__link">
+        <Link to='/chats' className="nav-link nav__link">
             <MailOutlineIcon className='footer-icon' fontSize="large"/>
         </Link>
         </div>
