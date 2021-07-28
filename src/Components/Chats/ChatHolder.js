@@ -6,25 +6,18 @@ import './chatholder.css'
 
 const useQuery = () => new URLSearchParams(useLocation().search);
 
-const ChatHolder = () => {
+const ChatHolder = ({username}) => {
   let query = useQuery();
   const [chats, setChats] = useState([]);
-  const [username, setUsername] = useState('');
   const [room, setRoom] = useState('');
   const socketRef = useRef();
   const loadedRef = useRef(false);
 
   useEffect(() => {
-    const username = localStorage.getItem('username')
-    setUsername(username);
-  }, [room, username]);
-
-  useEffect(() => {
     socketRef.current = io.connect('http://localhost:3000');
-    return () => {
-      socketRef.current.disconnect();
-    }
-  }, [socketRef]);
+    socketRef.current.emit('fetchChats', username);
+    return () => socketRef.current.disconnect();
+  }, [socketRef, username]);
 
   useEffect(() => {
     socketRef.current.on('sendChatList', info => {
@@ -32,31 +25,32 @@ const ChatHolder = () => {
       setChats(info);
     });
     return () => socketRef.current.removeAllListeners()
-  },[])
-//Please git when you are done we can git now
+  },[socketRef])
 
   useEffect(() => {
     if (loadedRef.current === false) {
-      if (!query.get('user')) {
-        loadedRef.current = true;
+      if (!query.get('rec')) {
+        return loadedRef.current = true;
       }
       const receiver = query.get('rec');
+      console.log(receiver);
       const title = query.get('ti');
-      const room = `${username}${receiver}`
-      const chatData = { username, receiver, room, title }
+      const host = `${username}${receiver}`;
+      console.log(host);
+      const chatData = { username, receiver, room:host, title }
       loadedRef.current = true;
       socketRef.current.emit('join', chatData);
       console.log('firing');
       return socketRef.current.emit('fetchChats', username);
     }
-  }, [query, loadedRef, room, username]);
+  }, [query, room, username]);
 
   return (
     <div className='page'>
       <div className='sidebar'>
         <h3>Chats</h3>
         {chats && chats.map(chat => (
-          <div key={chat.room} onClick={() => setRoom(chat.room)}>
+          <div key={chat.room} onClick={() => {setRoom(chat.room)}}>
             <h4>{chat.title}</h4>
             <p>{chat.receiver}</p>
           </div>

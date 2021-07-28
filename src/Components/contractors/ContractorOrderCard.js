@@ -50,12 +50,16 @@ export const ContractorOrderCard = ({ order }) => {
             <Gallery imageLinkArray={imgLink} />
             <div className="order-card__text">
 
-                <h3 className="order-title">{title}</h3>
+                <h3 className="order-title">Title: {title}</h3>
                 <p className="order-description">{description}</p>
-                <h4 className="adress-title">Adress</h4>
+                <h4 className="adress-title">Address:</h4>
                 <p className="order-street">{street}</p>
                 <p className="order-postal">{postalCode}</p>
                 <p className="order-city">{city}</p>
+            </div>
+            <div className='offer-pop'>
+                {isOpen && <Popup content={<CreateOffers id={id} togglePopup={togglePopup} saveOffer={saveOffertoDB} />} togglePopup={togglePopup} />}
+            { createMessage.length > 0 && <p className="rating-message">{createMessage}</p> }
             </div>
             <input
                 type="button"
@@ -63,10 +67,6 @@ export const ContractorOrderCard = ({ order }) => {
                 onClick={togglePopup}
                 className='newOrder'
             />
-            <div className='offer-pop'>
-                {isOpen && <Popup content={<CreateOffers id={id} togglePopup={togglePopup} saveOffer={saveOffertoDB} />} togglePopup={togglePopup} />}
-            </div>
-            { createMessage.length > 0 && <p className="rating-message">{createMessage}</p> }
         </div>
 
 

@@ -26,20 +26,20 @@ export const WorkorderList = () => {
     }
 
     return (
-        <div className="order-list">
+        <>
             <input
                 type="button"
                 value="New Work Order"
                 onClick={togglePopup}
                 className='newOrder'
             />
+        <div className="order-list">
             {isOpen && <Popup content={<CreateOrder newOrderBoolean={newOrderBoolean} setNewOrderBoolean={setNewOrderBoolean}
              setIsOpen={setIsOpen}/>} togglePopup={togglePopup}/> }
-
-            <h2>Hella work Orders:</h2>
             {orders.entities.map(order => (
                 <OrderCard order={order} key={order.id} />
             ))}
         </div>
+        </>
     )
 }

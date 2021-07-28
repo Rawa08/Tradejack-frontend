@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import '../LoginSignUp/Login.css';
 import axios from 'axios';
@@ -67,10 +67,10 @@ export const WorkOfferCard = ({ offer, client, title }) => {
 
   }
   useEffect(() => {
-    const encodedTitle = encodeURI(title);
-    const encodeRec = encodeURI(company_name);
+    const encodedTitle = encodeURI(title).toString();
+    const encodeRec = encodeURI(company_name).toString();
     setPath(`/chats/?rec=${encodeRec}&ti=${encodedTitle}`);
-  },[title, company_name]);
+  }, [title, company_name]);
 
   return (
     <> {ratingMessage.length > 0 && <p className="rating-message">{ratingMessage}</p>}
@@ -79,7 +79,7 @@ export const WorkOfferCard = ({ offer, client, title }) => {
           <img src={profile_image} alt='profile' />
         </div>
         <div>
-        {chosen ? <small>True</small> : <small>False</small>}
+          {chosen ? <small>True</small> : <small>False</small>}
           <div className='order-card-big__offer-holder--details'>
             <div className='top-holder'>
               <div>
@@ -88,7 +88,7 @@ export const WorkOfferCard = ({ offer, client, title }) => {
                 <p>{company_name}</p>
               </div>
               <div>
-                {path && <p><Link to={path}>Chat with {company_name}</Link></p>}
+                <p><Link to={path}>Chat with {company_name}</Link></p>
               </div>
             </div>
             <h4>Phone number:</h4>
@@ -100,7 +100,7 @@ export const WorkOfferCard = ({ offer, client, title }) => {
             <h5>{message_field}</h5>
             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
               {role === 'client' ? <label className="switch">
-                <input type="checkbox" onChange={toggleChosen} className='' checked={chosenState} />
+                {chosen ? <input type="checkbox" onChange={toggleChosen} className='' checked={chosenState} />: <input type="checkbox" onChange={toggleChosen} className='' /> }
                 <span className="slider round"></span>
               </label> : { chosenState } && <p>Your offer has been accepted</p>}
               <StarPicker onChange={setRatingValue} value={rating} size={20} />

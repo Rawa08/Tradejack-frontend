@@ -19,14 +19,15 @@ export const WorkOrders = () => {
     dispatch(fetchAllWorkOrders())
   }, [dispatch]);
 
-
+  useEffect(() => {
+    search.searchText.length < 1 && dispatch(fetchAllWorkOrders())
+  }, [search]);
 
   const setSearchValue = e => {
     setSearch({...search, searchText: e.target.value})
     dispatch(orderFilter(search))
   };
   const setSelectValue = e => {
-    console.log(e.target.value)
     setSearch({...search, searchField: e.target.value})
   };
   // onClick action
@@ -44,7 +45,7 @@ export const WorkOrders = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='container__contractor-order'>
       <div className="search-container">
         <form className='search-form'>
           <label className="search-label">Find prefered order</label>
@@ -56,9 +57,11 @@ export const WorkOrders = () => {
             <option value="title">Title</option>
             <option value="desc">Description</option>
           </select>
-          <input className="search-button" type="button" value="Search" onClick={e => submitSearch(e)}/>
+          {/* <input className="search-button" type="button" value="Search" onClick={e => submitSearch(e)}/> */}
         </form></div>
-      {orders && orders.entities.map(order => <ContractorOrderCard key={order.id} order={order}/>)}
+      <div className='order-list'>
+        {orders && orders.entities.map(order => <ContractorOrderCard key={order.id} order={order}/>)}
+      </div>
     </div>
   )
 

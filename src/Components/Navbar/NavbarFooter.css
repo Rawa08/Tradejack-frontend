@@ -3,7 +3,7 @@ footer{
   grid-template-columns: 25% 25% 25% 25%;
   text-align: center;
   border: black 1px solid;
-  background-color: rgb(43, 42, 42);;
+  background-color: rgb(43, 42, 42);
   position: fixed;
   bottom: 0;
   width: 100%;

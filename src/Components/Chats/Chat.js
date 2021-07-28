@@ -8,29 +8,33 @@ const Chat = ({ username, room, socketRef }) => {
   useEffect(() => {
     const socketNow = socketRef.current;
     if (room !== '') {
-      setMessage([]);
+      setMessages([]);
       socketNow.emit('fetchOld', room);
       socketNow.emit('join', room);
     }
   }, [room, socketRef])
 
   useEffect(() => {
-
     if (room !== '') {
-      const socketNow = socketRef.current;
-      socketNow.on("message", msg => {
-      setMessages(prevState => [...prevState, msg])
+      socketRef.current.on("message", msg => {
+        console.log('hi');
+        setMessages(prevState => [...prevState, msg])
       })
-      socketNow.on('bulkMessages', msgs => {
+      return () => socketRef.current.removeAllListeners();
+    }
+  }, [room, socketRef]);
+
+  useEffect(() => {
+    if (room !== '') {
+      socketRef.current.on('bulkMessages', msgs => {
         console.log(msgs);
         setMessages([...msgs]);
       })
     }
     return () => {
-      const socketLate = socketRef.current;
-      socketLate.removeAllListeners()
+      socketRef.current.removeAllListeners()
     }
-  }, [room,socketRef]);
+  }, [room, socketRef]);
 
   const messageSubmit = e => {
     e.preventDefault();
@@ -42,7 +46,7 @@ const Chat = ({ username, room, socketRef }) => {
     setError('Please select a chat')
     return setTimeout(() => {
       setError('');
-    },2000)
+    }, 2000)
   }
 
   return (

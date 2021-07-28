@@ -9,7 +9,9 @@ import './Home.css';
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const contractors = useSelector(state => state.homecontractorSlice)
+  const contractors = useSelector(state => state.homecontractorSlice);
+
+
 
   useEffect(() => {
     dispatch(fetchAllContractors())
@@ -42,7 +44,7 @@ export const Home = () => {
       <div className='contractor-holder'>
 
         {contractors.entities.map(contractor => (
-          <ContractorCard contractor={contractor}/>
+          <ContractorCard contractor={contractor} key={contractor.id}/>
         ))}
       </div>
     </div>
@@ -50,9 +52,11 @@ export const Home = () => {
 }
 
 export const ClientHome = () => {
+  const username = localStorage.getItem('username');
   return (
-    <div className='container'>
-      <h2>Your friendly client Home Page</h2>
+    <div className='container__clienthome'>
+      <h2>Hi! {username}</h2>
+      <h3 style={{marginTop: '0'}}>Your friendly client Home Page</h3>
       <WorkorderList/>
       <></>
     </div>
@@ -60,9 +64,11 @@ export const ClientHome = () => {
 }
 
 export const ContractorHome = () => {
+  const username = localStorage.getItem('username');
   return (
-    <div className='container'>
-      <h2>Your friendly Contractor Home Page</h2>
+    <div className='container__contractorhome'>
+      <h2 style={{margin: '0px'}}>{username}</h2>
+      <h3 style={{margin: '0.1rem'}}>Your friendly Contractor Home Page</h3>
       <WorkOrders />
     </div>
   )

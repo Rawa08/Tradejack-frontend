@@ -23,7 +23,7 @@ export const WorkOrdersAssigned = () => {
   }
 
   return (
-    <div className='container'>
+    <div className="order-card--offer__holder">
       {orders && orders.entities.map(order => <ContractorOrderCardOffer key={order.offer_id} order={order} />)}
     </div>
   )

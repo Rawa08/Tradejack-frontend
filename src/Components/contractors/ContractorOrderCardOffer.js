@@ -10,6 +10,7 @@ export const ContractorOrderCardOffer = ({ order }) => {
     date.setHours(date.getHours() + 2);
 
     return (
+
         <div className="order-card order-card--offer">
 
             {/* {imgLink.map((image, i) => <img style={image_style} key={`${image}+${i}`} src={image} alt="look here, it's a naked crocodile" />)} */}
@@ -42,6 +43,7 @@ export const ContractorOrderCardOffer = ({ order }) => {
                 <p>{message_field}</p>
             </div>
         </div>
+
     )
 }
 

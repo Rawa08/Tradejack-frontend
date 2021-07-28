@@ -30,13 +30,27 @@ border: #343a40 1px  solid;
 /* .order-postal {} */
 
 .order-card{
-    box-shadow: 1px 5px 29px -2px rgba(0,0,0,0.36);
-    border-radius: 10px;
-
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  box-shadow: 1px 5px 29px -2px rgba(0,0,0,0.36);
+  border-radius: 10px;
+  text-align: left;
   margin: 0.5rem;
+  max-width: 500px;
+  min-height: 600px;
 }
+
 .order-card__text{
     padding: 1rem;
+}
+
+.order-card__text > h3 {
+  text-decoration: underline;
+}
+
+.order-card__text > h4 {
+  text-decoration: underline;
 }
 
 .order-card input[type=button], .search-button{
@@ -75,6 +89,7 @@ border: #343a40 1px  solid;
     grid-template-columns: 70% 30%;
 }
 
+
 @media (max-width: 680px) {
     .order-card {
         width: 100%;
@@ -83,7 +98,7 @@ border: #343a40 1px  solid;
     }
 
     .order-card input[type=button], .search-button{
-        width: 98%;
+      max-width: 480px;
 
         }
 }

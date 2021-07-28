@@ -8,6 +8,8 @@
 
 .container__homepic >img{
   max-height: 400px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .container__home--data{
@@ -77,4 +79,16 @@
     background: url(https://digitaltrades.com.au/wp-content/uploads/2019/11/Handyman-Services.jpg);
     min-width: 600px;
   }
+}
+
+.container__clienthome{
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+.container__contractorhome{
+  display: flex;
+  flex-flow: column;
+  text-align: center;
 }
