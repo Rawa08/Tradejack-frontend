@@ -38,7 +38,7 @@ const homecontractorSlice = createSlice({
         builders
             .addCase(fetchAllContractors.fulfilled, (state, action) => {
                 state.status = 'done';
-                const sorted = action.payload.sort((a,b) => (a.rating - b.rating))
+                const sorted = action.payload.sort((a,b) => (b.rating - a.rating))
                 state.entities = [...sorted];
             })
     }

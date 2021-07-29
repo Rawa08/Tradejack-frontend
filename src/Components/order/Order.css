@@ -70,6 +70,24 @@
   color: white;
 }
 
+.order__btns {
+  display:grid;
+  grid-template-columns: 50% 20% 30%;
+  color: white;
+  margin-top:0.5rem;
+  margin-bottom: 1rem;
+}
+
+.order__btns button{
+  background-color: rgb(43, 42, 42);
+  color: white;
+  outline:none;
+  border-radius: 3px;
+  border:none;
+  padding-top: 0.2rem;
+  padding-bottom:0.2rem;
+}
+
 @media only screen and (min-width: 390px)  {
   .order-card-big__offer-holder h5{
     font-size: 0.8rem;

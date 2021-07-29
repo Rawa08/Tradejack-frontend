@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -8,9 +8,9 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import InfoIcon from '@material-ui/icons/Info';
 import './NavbarFooter.css'
 
-const NavbarFooter = ({userRole, setUserRole}) => {
+const NavbarFooter = ({ userRole, setUserRole }) => {
   const history = useHistory()
-
+  const [active, setActive] = useState(false);
   const logOut = () => {
     setUserRole('')
     localStorage.removeItem('accessToken');
@@ -18,91 +18,115 @@ const NavbarFooter = ({userRole, setUserRole}) => {
     history.push('/')
   }
 
-  if(!userRole){
+  if (!userRole) {
     return (
       <footer>
         <div className='footer-container'>
           <Link to='/' className="nav__link">
-            <HomeIcon className='footer-icon' fontSize="large"/>
+            <div className='footer__info'>
+              <HomeIcon className='footer-icon' fontSize="large" />
+              <p className='icon__text'>Home</p>
+            </div>
           </Link>
         </div>
         <div className='footer-container'>
           <Link to='/about' className="nav-link nav__link">
-            <InfoIcon className='footer-icon' fontSize="large"/>
+            <div className='footer__info'><InfoIcon className='footer-icon' fontSize="large" />
+              <p className='icon__text'>About</p>
+            </div>
           </Link>
         </div>
         <div className='footer-container'>
-        <Link to='/contact' className="nav-link nav__link">
-            <MailOutlineIcon className='footer-icon' fontSize="large"/>
-        </Link>
+          <Link to='/contact' className="nav-link nav__link">
+            <div className='footer__info'>
+              <MailOutlineIcon className='footer-icon' fontSize="large" />
+              <p className='icon__text'>Contact us</p>
+            </div>
+          </Link>
         </div>
         <div className='footer-container'>
-          {userRole
-          ? <ExitToAppIcon onClick={logOut} className='footer-icon' fontSize="large"/>
-          : <Link to='/login' className="nav__link">
-              <AccountCircleIcon className='footer-icon' fontSize="large"/>
-             </Link>}
-
+          <Link to='/login' className="nav__link">
+            <div className='footer__info'>
+              <AccountCircleIcon className='footer-icon' fontSize="large" />
+              <p className='icon__text'>Login</p>
+            </div>
+          </Link>
         </div>
       </footer>
     )
   }
-  if(userRole === 'contractor'){
+  if (userRole === 'contractor') {
     return (
       <footer>
         <div className='footer-container'>
           <Link to='/' className="nav__link">
-            <HomeIcon className='footer-icon' fontSize="large"/>
+            <div className='footer__info'>
+              <HomeIcon className='footer-icon' fontSize="large" />
+              <p className='icon__text'>W. Orders</p>
+            </div>
           </Link>
         </div>
         <div className='footer-container'>
           <Link to='/myorders' className="nav-link nav__link">
-            <WebAssetIcon className='footer-icon' fontSize="large"/>
+            <div className='footer__info'>
+              <WebAssetIcon className='footer-icon' fontSize="large" />
+              <p className='icon__text'>My Orders</p>
+            </div>
           </Link>
         </div>
         <div className='footer-container'>
-        <Link to='/chats' className="nav-link nav__link">
-            <MailOutlineIcon className='footer-icon' fontSize="large"/>
-        </Link>
+
+          <Link to='/chats' className="nav-link nav__link" onClick={e => setActive(true)}>
+            <div className='footer__info'>
+              {active ? <MailOutlineIcon className='footer-icon' fontSize="large" /> : <MailOutlineIcon className='footer-icon chat-icon' fontSize="large" />}
+              <p className='icon__text'>Chat</p>
+            </div>
+          </Link>
         </div>
         <div className='footer-container'>
-          {userRole
-          ? <ExitToAppIcon onClick={logOut} className='footer-icon' fontSize="large"/>
-          : <Link to='/login' className="nav__link">
-              <AccountCircleIcon className='footer-icon' fontSize="large"/>
-             </Link>}
-
+          <div className='footer__info'>
+            <ExitToAppIcon onClick={logOut} className='footer-icon' fontSize="large" />
+            <p className='icon__text'>LogOut</p>
+          </div>
         </div>
       </footer>
     )
   }
-  if(userRole === 'client'){
+  if (userRole === 'client') {
     return (
       <footer>
-        <div  className='footer-container'>
+        <div className='footer-container'>
           <Link to='/' className="nav__link">
-            <HomeIcon className='footer-icon' fontSize="large"/>
+            <div className='footer__info'>
+              <HomeIcon className='footer-icon' fontSize="large" />
+              <p className='icon__text'>My orders</p>
+            </div>
           </Link>
         </div>
         <div className='footer-container'>
           <Link to='/about' className="nav-link nav__link">
-            <InfoIcon className='footer-icon' fontSize="large"/>
+            <div className='footer__info'>
+              <InfoIcon className='footer-icon' fontSize="large" />
+              <p className='icon__text'>About</p>
+            </div>
           </Link>
         </div>
         <div className='footer-container'>
-        <Link to='/chats' className="nav-link nav__link">
-            <MailOutlineIcon className='footer-icon' fontSize="large"/>
-        </Link>
-        </div>
-        <div className='footer-container'>
-          {userRole
-          ? <ExitToAppIcon onClick={logOut} className='footer-icon' fontSize="large"/>
-          : <Link to='/login' className="nav__link">
-              <AccountCircleIcon className='footer-icon' fontSize="large"/>
-             </Link>}
-        </div>
+            <Link to='/chats' className="nav-link nav__link" onClick={e => setActive(true)}>
+              <div className='footer__info'>
+                {active ? <MailOutlineIcon className='footer-icon' fontSize="large" /> : <MailOutlineIcon className='footer-icon chat-icon' fontSize="large" />}
+                <p className='icon__text'>Chats</p>
+              </div>
+            </Link>
+          </div>
+          <div className='footer-container'>
+            <div className='footer__info'>
+              <ExitToAppIcon onClick={logOut} className='footer-icon' fontSize="large" />
+              <p className='icon__text'>LogOut</p>
+            </div>
+          </div>
       </footer>
-    )
+        )
   }
 }
 

@@ -1,32 +1,32 @@
-.my-message{
-  display:flex;
+.my-message {
+  display: flex;
   flex-direction: column;
   margin: 0.25rem 5px;
-  margin-left:auto;
-  right:0;
-  background-color: rgb(41, 134, 249);
+  margin-left: auto;
+  right: 0;
+  background-color: #212529;
   width: 60vw;
   border-radius: 10px;
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
+  color:white;
 }
 
-.other-message p,
-.my-message p {
+.other-message p, .my-message p {
   margin-left: 10px;
 }
 
-.message__content{
+.message__content {
   text-align: left;
   align-self: start;
 }
 
-.other-message{
-  display:flex;
+.other-message {
+  display: flex;
   flex-direction: column;
   margin: 0.25rem 5px;
-  margin-right:auto;
-  left:0;
+  margin-right: auto;
+  left: 0;
   background-color: rgb(164, 163, 163);
   width: 60vw;
   border-radius: 10px;
@@ -34,22 +34,38 @@
   padding-bottom: 0.1rem;
 }
 
-.message__info{
+.message__info {
   display: flex;
   flex-direction: row;
 }
-.message__author,
-.message__content,
+
+.message__author, .message__content, .message__ts {
+  color: white;
+  margin: auto;
+}
+
 .message__ts {
+  font-size: 0.7rem;
+}
+
+.chat__input {
+  margin-left: 5px;
+  resize: none;
+  width: 86vw;
+  height: 3rem;
+}
+
+.chat__form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+}
+
+.chat__button {
+  background-color: #212529;
   color:white;
-  margin:auto;
-}
-
-.message__ts{
- font-size: 0.7rem;
-}
-
-.chat__input{
-  resize: vertical;
-  width: 80vw;
+  border-radius: 2px;
+  border:none;
+  outline: none;
+  padding:6px;
 }

@@ -27,6 +27,8 @@ function App() {
     setUsername(username);
   },[]);
 
+  console.log(username);
+
 
   if (!userRole) {
     return (

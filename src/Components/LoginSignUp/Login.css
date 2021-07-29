@@ -81,7 +81,7 @@ input:checked+.slider:before {
   flex-direction: column;
   justify-content: center;
   box-shadow: 6px 3px 17px -5px rgba(0, 0, 0, 0.24);
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.806);
   height: 40vh;
@@ -94,16 +94,18 @@ input:checked+.slider:before {
 }
 
 .login__icon {
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 .ninja-button {
   padding: 0.5rem;
-  border-radius: 20px;
+  margin-left:auto;
+  margin-right: 40px;
+  border-radius: 10px;
   max-width: 80px;
   border: 1px solid rgb(46, 44, 44);
   background: none;
-  align-self: flex-end;
+  margin-bottom: 10px;
 }
 
 .input-field {
@@ -143,4 +145,10 @@ input:checked+.slider:before {
   display: flex;
   flex-direction: row;
   justify-items: space-between;
+}
+
+.signbtn {
+  outline:none;
+  border:none;
+  background: transparent;
 }

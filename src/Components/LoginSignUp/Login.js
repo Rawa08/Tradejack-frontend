@@ -9,11 +9,6 @@ export const Login = ({setUserRole}) => {
   const [roleState, setRoleState] = useState('client');
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleState = () => {
-    const newState = roleState === 'client' ? 'contractor' : 'client';
-    setRoleState(newState);
-  }
-
   const togglePopup = () => {
     setIsOpen(!isOpen);
 }
@@ -22,14 +17,18 @@ export const Login = ({setUserRole}) => {
     <div className='formthing'>
       <div className='form__login'>
 
-        <label className="switch">
+        {/* <label className="switch">
           <input type="checkbox" onChange={toggleState}/>
             <span className="slider round"></span>
 
-          </label>
+          </label> */}
+
           <h4>{roleState === 'client' ? 'Client' : 'Contractor'} Log in</h4>
           <LoginForm roleState={roleState} setUserRole={setUserRole}/>
           {isOpen && <Popup content={<Signup togglePopup={togglePopup} />} togglePopup={togglePopup} />}
+
+          {roleState === 'client' ? <button className='signbtn' onClick={()=>setRoleState('contractor')}>Sign in as Contractor</button>
+          : <button className='signbtn' onClick={()=>setRoleState('client')}>Sign in as Client</button>}
           <input
                   type="button"
                   value="Sign up!"

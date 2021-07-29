@@ -48,7 +48,7 @@ export const ContractorOrderCard = ({ order }) => {
         <div className="order-card">
 
             {/* {imgLink.map((image, i) => <img style={image_style} key={`${image}+${i}`} src={image} alt="look here, it's a naked crocodile" />)} */}
-            <img src={imgLink} className="card-image"/>
+            <img src={imgLink[0]} className="card-image"/>
             <Link to={`/order/${id}`} style={{ textDecoration: 'none' }}>
             <div className="order-card__text">
 

@@ -56,8 +56,8 @@ export const ClientHome = () => {
   const username = localStorage.getItem('username');
   return (
     <div className='container__clienthome'>
-      <h2>Hi! {username}</h2>
-      <h3 style={{marginTop: '0'}}>Your friendly client Home Page</h3>
+      <h2 style={{textTransform:'capitalize',marginTop: '10px'}}>Hi {username}!</h2>
+      <h3 style={{marginTop: '0', textTransform:'capitalize'}}>Your friendly client Home Page</h3>
       <WorkorderList/>
       <></>
     </div>

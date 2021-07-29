@@ -1,12 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { changeDoneStatus } from '../../Slice/workorder-slice'
-import {Gallery} from '../Gallery';
-import { Link } from 'react-router-dom';
+import { Gallery } from '../Gallery';
+import { Link, useHistory } from 'react-router-dom';
 
 
 export const WorkOrderCard = ({ order }) => {
+    const history = useHistory();
     const dispatch = useDispatch();
-    const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink, start_date: startDate, work_done: workDone, ts}
+    const { id, title, description, street, postal_code: postalCode, city, image_link: imgLink, start_date: startDate, work_done: workDone, ts }
         = order;
 
     // const descLength = description.length;
@@ -16,7 +17,7 @@ export const WorkOrderCard = ({ order }) => {
     date.setHours(date.getHours() + 2);
     dateStamp.setHours(dateStamp.getHours() + 2);
     const tsDay = dateStamp.getDate().toString().length === 1 ? `0${dateStamp.getDate()}` : dateStamp.getDate()
-    const tsMonth = dateStamp.getMonth().toString().length === 1 ? `0${dateStamp.getMonth()+1}` : dateStamp.getMonth()+1
+    const tsMonth = dateStamp.getMonth().toString().length === 1 ? `0${dateStamp.getMonth() + 1}` : dateStamp.getMonth() + 1
     const tsHours = dateStamp.getHours().toString().length === 1 ? `0${dateStamp.getHours()}` : dateStamp.getHours()
     const tsMinutes = dateStamp.getMinutes().toString().length === 1 ? `0${dateStamp.getMinutes()}` : dateStamp.getMinutes()
     const shownDate = `${tsHours}:${tsMinutes} - ${tsDay}/${tsMonth}`
@@ -34,10 +35,8 @@ export const WorkOrderCard = ({ order }) => {
     return (
         <>
             <div className='worder-card' style={redRawa}>
-            <Link to={`/order/${id}`} style={{ textDecoration: 'none' }}>
-            <Gallery imageLinkArray={imgLink} />
-
-                <div className='worder-card__text'>
+                <Gallery imageLinkArray={imgLink} />
+                <div className='worder-card__text' onClick={() => history.push(`/order/${id}`)}>
                     <div className='worder-card__text--date'>Registered: {shownDate}</div>
                     <h3>{title}</h3>
                     <p>{description}</p>
@@ -45,10 +44,10 @@ export const WorkOrderCard = ({ order }) => {
                     <p>{street}</p>
                     <p>{postalCode}</p>
                     <p>{city}</p>
-
                 </div>
-                </Link>
-                <button className="orderDone-button" onClick={onDone}>Order Done</button>
+
+                <Link to={`/order/${id}`} style={{ textDecoration: 'none' }}><button className="offer-button">Click here to see offers</button></Link>
+                {/* <button className="orderDone-button" onClick={onDone}>Order Done</button> */}
             </div>
 
         </>

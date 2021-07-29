@@ -12,8 +12,16 @@ footer{
 }
 
 .footer-icon{
+  transform: scale(0.8);
   color: white;
   cursor: pointer;
+  padding-bottom: 0.2rem;
+}
+
+.icon__text{
+  margin-top: -1rem;
+  padding:0;
+  color:white;
 }
 
 .footer-container{
@@ -32,3 +40,8 @@ footer{
     background-color: transparent;
   }
 }
+
+.chat-icon{
+  color: red;
+}
+

@@ -36,7 +36,7 @@
   padding-top: 0;
   text-align: left;
 
-  min-height: 750px;
+  /* min-height: 750px; */
 }
 
 .worder-card:hover{
@@ -52,7 +52,7 @@
 }
 
 .worder-card__text:hover{
-  cursor: pointer;
+
   text-decoration: none;
 }
 
@@ -69,8 +69,15 @@
 
 .worder-card__text--date {
   text-align: end;
-
   margin-right: 10px;
+}
+
+.offer-button{
+  cursor: pointer;
+  margin: 1rem;
+  width: 93%;
+  background-color: rgb(43, 42, 42);
+  color: white;
 }
 
 @media (max-width: 680px) {

@@ -102,7 +102,7 @@ const workorderSlice = createSlice({
                 const sorted = action.payload.sort((a, b) => (a.work_done - b.work_done))
                 const filtered = action.payload.filter(entity => !entity.work_done)
                 state.entities = [...filtered];
-            })
+            })//here sorted fil
             .addCase(fetchAllWorkOrder.fulfilled, (state, action) => {
                 state.status = 'done';
                 state.entities = [...action.payload]
