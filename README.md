@@ -5,7 +5,7 @@ This application is the frontend part of Ninja devs graduation project as javasc
 Tradejack API [here](https://github.com/Rawa08/Tradejack-backend)   
     
 
-####  The member of  Ninja Devs: 
+####  The members of  Ninja Devs: 
 [Adam Csetneki](https://github.com/Tottzi)  
 [Oscar](https://github.com/oscarstromsater)   
 [Rawa Aref](https://github.com/rawa08)   
