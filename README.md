@@ -1,5 +1,7 @@
 # Tradejack
-## Mob programming By NinjaDevs <img src="ninjaLogo.png" alt="logo" width="80"/>  
+<img src="mobileView.png" alt="Mobile View Image" width="15%" height="15%">
+
+## Mob programming By NinjaDevs <img src="ninjaLogo.png" alt="logo" width="80"/> 
 Tradejack is a meeting place where clients and contractors can find each other and agree on work.  
 This application is the frontend part of Ninja devs graduation project as javascript fullstack developer at [School of Applied Technology](https://github.com/saltsthlm)  
 Tradejack API [here](https://github.com/Rawa08/Tradejack-backend)   
